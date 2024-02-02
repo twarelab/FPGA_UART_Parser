@@ -13,3 +13,5 @@
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.xpr
+update_compile_order -fileset sources_1
+synth_design -top UARTdemo -part xc7a100tcsg324-1 -lint 

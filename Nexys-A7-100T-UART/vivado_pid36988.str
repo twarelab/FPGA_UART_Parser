@@ -151,3 +151,94 @@ Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // Tcl Message: INFO: [Project 1-313] Project file moved from 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART' since last save. 
 // Tcl Message: Scanning sources... Finished scanning sources 
 // Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'. 
+// [Engine Memory]: 1,127 MB (+11560kb) [00:00:13]
+// Tcl Message: open_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:09 . Memory (MB): peak = 1492.594 ; gain = 415.480 
+// Project name: UART_Demo; location: C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bq (Open Project Progress)
+// [GUI Memory]: 152 MB (+9657kb) [00:00:14]
+// Tcl Message: update_compile_order -fileset sources_1 
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // ag (PAResourceItoN.MainMenuMgr_REPORTS, Reports)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // ag (PAResourceItoN.MainMenuMgr_REPORTS, Reports)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // ag (PAResourceItoN.MainMenuMgr_FLOW, Flow)
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // ag (PAResourceItoN.MainMenuMgr_FLOW, Flow)
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag (PAResourceItoN.MainMenuMgr_FILE, File)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // al (PAResourceItoN.MainMenuMgr_PROJECT, Project)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // al (PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, Open Recent)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // al (PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, Open Recent)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag (PAResourceItoN.MainMenuMgr_FILE, File)
+selectMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // ag (RDIResource.MainWinMenuMgr_LAYOUT, Layout)
+dismissMenu(RDIResource.MainWinMenuMgr_LAYOUT, "Layout"); // ag (RDIResource.MainWinMenuMgr_LAYOUT, Layout)
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ag (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ag (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // ag (PAResourceItoN.MainMenuMgr_REPORTS, Reports)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // ag (PAResourceItoN.MainMenuMgr_REPORTS, Reports)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+selectMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // ag (PAResourceItoN.MainMenuMgr_FLOW, Flow)
+selectMenu(PAResourceItoN.MainMenuMgr_SETTINGS, "Settings"); // al (PAResourceItoN.MainMenuMgr_SETTINGS, Settings)
+selectMenu(PAResourceCommand.PACommandNames_SIMULATION_RUN, "Run Simulation"); // ag (PAResourceCommand.PACommandNames_SIMULATION_RUN)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN, "Open Implemented Design"); // al (PAResourceItoN.MainMenuMgr_OPEN, Open Implemented Design)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN, "Open Implemented Design"); // al (PAResourceItoN.MainMenuMgr_OPEN, Open Implemented Design)
+selectMenu(PAResourceCommand.PACommandNames_SIMULATION_RUN, "Run Simulation"); // ag (PAResourceCommand.PACommandNames_SIMULATION_RUN)
+selectMenu(PAResourceItoN.MainMenuMgr_SETTINGS, "Settings"); // al (PAResourceItoN.MainMenuMgr_SETTINGS, Settings)
+dismissMenu(PAResourceItoN.MainMenuMgr_FLOW, "Flow"); // ag (PAResourceItoN.MainMenuMgr_FLOW, Flow)
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag (PAResourceItoN.MainMenuMgr_FILE, File)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // ag (PAResourceItoN.MainMenuMgr_FILE, File)
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // ag (PAResourceItoN.MainMenuMgr_EDIT, Edit)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // ag (PAResourceItoN.MainMenuMgr_TOOLS, Tools)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis]", 14, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 11, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 11, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 17, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 18, false, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Open Synthesized Design]", 16, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Open Implemented Design]", 19, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectMenu(PAResourceEtoH.FlowNavigatorTreePanel_OPEN, "Open Implemented Design"); // al (PAResourceEtoH.FlowNavigatorTreePanel_OPEN, Open Implemented Design)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 20, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 20, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node
+// Elapsed time: 17 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Run Linter]", 12, false, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis, Run Linter]", 12, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// TclEventType: MSGMGR_REFRESH_MSG
+// [Engine Memory]: 1,189 MB (+6352kb) [00:01:36]
+// Tcl Message: synth_design -top UARTdemo -part xc7a100tcsg324-1 -lint  
+// Tcl Message: Command: synth_design -top UARTdemo -part xc7a100tcsg324-1 -lint Starting synth_design Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t' 
+// Tcl Message: INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t' 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,480 MB. GUI used memory: 75 MB. Current time: 2/2/24, 7:42:53 PM KST
+// TclEventType: DESIGN_NEW_FAILED
+// TclEventType: LINTER_RUN
+// Tcl Message: INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes. INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes INFO: [Synth 8-7075] Helper process launched with PID 38884 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 1897.410 ; gain = 404.816 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Clean up Linter database... 
+// Tcl Message: INFO: [Synth 8-11241] undeclared symbol 'tx_valid', assumed default net type 'wire' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:169] 
+// Tcl Message: INFO: [Synth 8-6155] done synthesizing module 'rst_ctrl' (1#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:23] INFO: [Synth 8-6157] synthesizing module 'uart_module' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:23] INFO: [Synth 8-638] synthesizing module 'tiny_uart' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart.vhd:85] INFO: [Synth 8-638] synthesizing module 'tiny_uart_baud_bit_gen' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60] 
+// Tcl Message: 	Parameter NUMBIT bound to: 10 - type: integer  	Parameter CLKDIV2 bound to: 109 - type: integer  	Parameter SKIP_LAST_BIT2 bound to: 0 - type: bool  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'tiny_uart_baud_bit_gen' (2#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60] INFO: [Synth 8-638] synthesizing module 'tiny_uart_inp_filter' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_inp_filter.vhd:58] 
+// Tcl Message: 	Parameter SYNC_STAGES bound to: 2 - type: integer  	Parameter VOTER_STAGES bound to: 3 - type: integer  	Parameter OUTP_RST bound to: 1'b1  	Parameter RST_ACTIVE bound to: 1'b1  
+// Tcl Message: INFO: [Synth 8-256] done synthesizing module 'tiny_uart_inp_filter' (3#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_inp_filter.vhd:58] INFO: [Synth 8-638] synthesizing module 'tiny_uart_baud_bit_gen__parameterized0' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60] 
+// Tcl Message: 	Parameter NUMBIT bound to: 10 - type: integer  	Parameter CLKDIV2 bound to: 109 - type: integer  	Parameter SKIP_LAST_BIT2 bound to: 1 - type: bool  
+// Tcl Message: INFO: [Synth 8-6155] done synthesizing module 'cmd_parser' (7#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:23] 
+// Tcl Message: INFO: [Synth 8-6157] synthesizing module 'io_ctrl' [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/io_ctrl.v:23] INFO: [Synth 8-6155] done synthesizing module 'io_ctrl' (8#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/io_ctrl.v:23] 
+// Tcl Message: INFO: [Synth 8-6155] done synthesizing module 'UARTdemo' (9#1) [C:/Users/User1/Documents/Work/FPGA_UART_Demo/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:47] 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2014.645 ; gain = 522.051 
+// Tcl Message: --------------------------------------------------------------------------------- 
+// Tcl Message: INFO: [Synth 37-85] Total of 43 linter message(s) generated. INFO: [Synth 37-45] Linter Run Finished! 
+// Tcl Message: Synthesis Optimization Runtime : Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2014.645 ; gain = 522.051 
+// Tcl Message: INFO: [Common 17-83] Releasing license: Synthesis 
+// Tcl Message: 41 Infos, 68 Warnings, 0 Critical Warnings and 0 Errors encountered. synth_design completed successfully 
+// Tcl Message: synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2014.645 ; gain = 522.051 
+// 'a' command handler elapsed time: 7 seconds
+dismissDialog("Run Linter"); // bq (Run Linter Progress)
+// [Engine Memory]: 1,666 MB (+437713kb) [00:01:44]
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, RTL Analysis]", 11, true, false, false, false, true, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Popup Trigger - Node

@@ -1,3 +1,4 @@
+*.log
 .Xil
 impl_1
 *synth_1
