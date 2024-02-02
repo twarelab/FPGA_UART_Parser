@@ -1,0 +1,561 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.1 (64-bit)
+# SW Build 4081461 on Thu Dec 14 12:24:51 MST 2023
+# IP Build 4080415 on Thu Dec 14 21:01:57 MST 2023
+# SharedData Build 4077621 on Mon Dec 11 00:23:44 MST 2023
+# Start of session at: Fri Feb  2 18:12:48 2024
+# Process ID: 37620
+# Current directory: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15568 C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.xpr
+# Log file: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/vivado.log
+# Journal file: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART\vivado.jou
+# Running On: TWLAB-B, OS: Windows, CPU Frequency: 3000 MHz, CPU Physical cores: 8, Host memory: 17111 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.xpr
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kc705:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kc705/1.6/board.xml as part xc7k325tffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.4/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.5 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.5/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc707:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc707/1.4/board.xml as part xc7vx485tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vc709:part0:1.8 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vc709/1.8/board.xml as part xc7vx690tffg1761-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/3.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.0/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190_newl/production/1.1/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu128/production/1.0/board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/production/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_mpsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_mpsoc/1.0/board.xml as part xczu19eg-ffvd1760-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vermeo_t1_rfsoc:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vermeo_t1_rfsoc/1.0/board.xml as part xczu21dr-ffvd1156-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/production/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:3.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/3.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.0/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_newl:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180_newl/production/1.1/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.0/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.1/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/production/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.0/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk180:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk180/production/1.1/board.xml as part xcvp1802-lsvc4072-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc702:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc702/1.4/board.xml as part xc7z020clg484-1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zc706:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zc706/1.4/board.xml as part xc7z045ffg900-2 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.3/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu102:part0:3.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu102/3.4/board.xml as part xczu9eg-ffvb1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu104:part0:1.1 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu104/1.1/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.4/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.5 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.5/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu106:part0:2.6 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu106/2.6/board.xml as part xczu7ev-ffvc1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.2 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.2/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.3 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.3/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu111:part0:1.4 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu111/1.4/board.xml as part xczu28dr-ffvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1275:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1275/1.0/board.xml as part xczu29dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu1285:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu1285/1.0/board.xml as part xczu39dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208/production/2.0/board.xml as part xczu48dr-fsvg1517-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216/production/2.0/board.xml as part xczu49dr-ffvf1760-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at C:/Xilinx/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.2/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 1556.590 ; gain = 289.270
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/DigitToSeg.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/DigitToSeg.v
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/sevensegdecoder.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/sevensegdecoder.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/sevensegdecoder.v
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+ERROR: [Common 17-180] Spawn failed: No such file or directory
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+ERROR: [Common 17-180] Spawn failed: No such file or directory
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/segClkDevider.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/segClkDevider.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/segClkDevider.v
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+ERROR: [Common 17-180] Spawn failed: No such file or directory
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+ERROR: [Common 17-180] Spawn failed: No such file or directory
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/packet_parser.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/packet_parser.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/packet_parser.v
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/counter3bit.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/counter3bit.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/counter3bit.v
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/decoder3_8.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/decoder3_8.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/decoder3_8.v
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/mux4_4bus.v] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/mux4_4bus.v
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/mux4_4bus.v
+create_bd_design "uart_fifo"
+Wrote  : <C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\bd\uart_fifo\uart_fifo.bd> 
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\tiny_uart.vhd:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\uart_module.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_0
+INFO: [xilinx.com:ip:fifo_generator:13.2-5968] /fifo_generator_0Executing the post_config_ip from bd
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:clkrst -config { Clk {New Clocking Wizard} Freq {100} Ref_Clk0 {} Ref_Clk1 {} Ref_Clk2 {}}  [get_bd_pins fifo_generator_0/clk]
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+create_bd_cell: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1944.289 ; gain = 387.699
+apply_bd_automation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1944.289 ; gain = 387.699
+delete_bd_objs [get_bd_nets clk_wiz_clk_out1] [get_bd_cells clk_wiz]
+open_bd_design {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo/uart_fifo.bd}
+delete_bd_objs [get_bd_cells fifo_generator_0]
+open_bd_design {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo/uart_fifo.bd}
+export_ip_user_files -of_objects  [get_files C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo/uart_fifo.bd] -no_script -reset -force -quiet
+remove_files  C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo/uart_fifo.bd
+Wrote  : <C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo/ui/bd_e74fd5fd.ui> 
+file delete -force C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/uart_fifo
+file delete -force c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.gen/sources_1/bd/uart_fifo
+create_ip -name fifo_generator -vendor xilinx.com -library ip -version 13.2 -module_name uart_fifo
+set_property -dict [list \
+  CONFIG.Data_Count {true} \
+  CONFIG.Input_Data_Width {8} \
+  CONFIG.Valid_Flag {true} \
+] [get_ips uart_fifo]
+generate_target {instantiation_template} [get_files c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/ip/uart_fifo/uart_fifo.xci]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'uart_fifo'...
+generate_target all [get_files  c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/ip/uart_fifo/uart_fifo.xci]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'uart_fifo'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'uart_fifo'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'uart_fifo'...
+catch { config_ip_cache -export [get_ips -all uart_fifo] }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: uart_fifo
+export_ip_user_files -of_objects [get_files c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/ip/uart_fifo/uart_fifo.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/ip/uart_fifo/uart_fifo.xci]
+launch_runs uart_fifo_synth_1 -jobs 4
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: uart_fifo
+[Fri Feb  2 18:38:47 2024] Launched uart_fifo_synth_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/uart_fifo_synth_1/runme.log
+export_simulation -of_objects [get_files c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/ip/uart_fifo/uart_fifo.xci] -directory C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.ip_user_files -ipstatic_source_dir C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.cache/compile_simlib/modelsim} {questa=C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.cache/compile_simlib/questa} {riviera=C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.cache/compile_simlib/riviera} {activehdl=C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+synth_design -top UARTdemo -part xc7a100tcsg324-1 -lint 
+Command: synth_design -top UARTdemo -part xc7a100tcsg324-1 -lint
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 19788
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 2419.648 ; gain = 421.406
+---------------------------------------------------------------------------------
+Clean up Linter database...
+WARNING: [Synth 8-6901] identifier 'main_state' is used before its declaration [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:51]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'rts' is not allowed [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:55]
+INFO: [Synth 8-11241] undeclared symbol 'rx_wr_en', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:70]
+INFO: [Synth 8-11241] undeclared symbol 'thre', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:72]
+INFO: [Synth 8-11241] undeclared symbol 'thrl', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:73]
+INFO: [Synth 8-11241] undeclared symbol 'tre', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:74]
+WARNING: [Synth 8-8895] 'thrl' is already implicitly declared on line 73 [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:104]
+INFO: [Synth 8-11241] undeclared symbol 'tx_valid', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:169]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'LED16_B' is not allowed [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:81]
+WARNING: [Synth 8-11121] redeclaration of ANSI port 'LED17_R' is not allowed [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:81]
+INFO: [Synth 8-11241] undeclared symbol 'rx_rd_en', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:105]
+INFO: [Synth 8-11241] undeclared symbol 'rx_empty', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:107]
+INFO: [Synth 8-11241] undeclared symbol 'rx_valid', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:108]
+INFO: [Synth 8-11241] undeclared symbol 'tx_wr_en', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:113]
+INFO: [Synth 8-11241] undeclared symbol 'tx_full', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:114]
+INFO: [Synth 8-11241] undeclared symbol 'RTS', assumed default net type 'wire' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:117]
+INFO: [Synth 8-6157] synthesizing module 'UARTdemo' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:47]
+INFO: [Synth 8-6157] synthesizing module 'rst_ctrl' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:59]
+WARNING: [Synth 8-7137] Register rst_state_reg in module rst_ctrl has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:54]
+WARNING: [Synth 8-7137] Register rst_state_reg in module rst_ctrl has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:54]
+INFO: [Synth 8-6155] done synthesizing module 'rst_ctrl' (1#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/rst_ctrl.v:23]
+INFO: [Synth 8-6157] synthesizing module 'uart_module' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:23]
+INFO: [Synth 8-638] synthesizing module 'tiny_uart' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart.vhd:85]
+INFO: [Synth 8-638] synthesizing module 'tiny_uart_baud_bit_gen' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60]
+	Parameter NUMBIT bound to: 10 - type: integer 
+	Parameter CLKDIV2 bound to: 109 - type: integer 
+	Parameter SKIP_LAST_BIT2 bound to: 0 - type: bool 
+INFO: [Synth 8-256] done synthesizing module 'tiny_uart_baud_bit_gen' (2#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60]
+INFO: [Synth 8-638] synthesizing module 'tiny_uart_inp_filter' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_inp_filter.vhd:58]
+	Parameter SYNC_STAGES bound to: 2 - type: integer 
+	Parameter VOTER_STAGES bound to: 3 - type: integer 
+	Parameter OUTP_RST bound to: 1'b1 
+	Parameter RST_ACTIVE bound to: 1'b1 
+INFO: [Synth 8-256] done synthesizing module 'tiny_uart_inp_filter' (3#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_inp_filter.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'tiny_uart_baud_bit_gen__parameterized0' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60]
+	Parameter NUMBIT bound to: 10 - type: integer 
+	Parameter CLKDIV2 bound to: 109 - type: integer 
+	Parameter SKIP_LAST_BIT2 bound to: 1 - type: bool 
+INFO: [Synth 8-256] done synthesizing module 'tiny_uart_baud_bit_gen__parameterized0' (3#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart_baud_bit_gen.vhd:60]
+INFO: [Synth 8-256] done synthesizing module 'tiny_uart' (4#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart.vhd:85]
+INFO: [Synth 8-6157] synthesizing module 'uart_fifo' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/.Xil/Vivado-37620-TWLAB-B/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'uart_fifo' (5#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/.Xil/Vivado-37620-TWLAB-B/realtime/uart_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'uart_module' (6#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v:23]
+INFO: [Synth 8-6157] synthesizing module 'cmd_parser' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:23]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:58]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:98]
+WARNING: [Synth 8-6014] Unused sequential element checksum_calculated_reg was removed.  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:94]
+WARNING: [Synth 8-6014] Unused sequential element checksum_received_reg was removed.  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:95]
+WARNING: [Synth 8-7137] Register timer_state_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:58]
+WARNING: [Synth 8-7137] Register rx_rd_en_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:104]
+WARNING: [Synth 8-7137] Register buffer_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code 
+WARNING: [Synth 8-7137] Register tx_wr_en_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:129]
+WARNING: [Synth 8-7137] Register tx_byte_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:130]
+WARNING: [Synth 8-7137] Register timer_state_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:58]
+WARNING: [Synth 8-7137] Register rx_rd_en_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:104]
+WARNING: [Synth 8-7137] Register buffer_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code 
+WARNING: [Synth 8-7137] Register tx_wr_en_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:129]
+WARNING: [Synth 8-7137] Register tx_byte_reg in module cmd_parser has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:130]
+INFO: [Synth 8-6155] done synthesizing module 'cmd_parser' (7#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v:23]
+WARNING: [Synth 8-689] width (3) of port connection 'debug' does not match port width (16) of module 'cmd_parser' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:140]
+INFO: [Synth 8-6157] synthesizing module 'io_ctrl' [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/io_ctrl.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'io_ctrl' (8#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/io_ctrl.v:23]
+WARNING: [Synth 8-3848] Net JC in module/entity UARTdemo does not have driver. [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:49]
+WARNING: [Synth 8-3848] Net LED17_R in module/entity UARTdemo does not have driver. [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:57]
+WARNING: [Synth 8-3848] Net io_ctrl_set in module/entity UARTdemo does not have driver. [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:151]
+WARNING: [Synth 8-3848] Net io_ctrl_disable in module/entity UARTdemo does not have driver. [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:152]
+WARNING: [Synth 8-3848] Net io_ctrl_wr in module/entity UARTdemo does not have driver. [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:153]
+INFO: [Synth 8-6155] done synthesizing module 'UARTdemo' (9#1) [C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v:47]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2534.922 ; gain = 536.680
+---------------------------------------------------------------------------------
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.1 (win64) Build 4081461 Thu Dec 14 12:24:51 MST 2023
+| Date         : Fri Feb  2 18:42:31 2024
+| Host         : TWLAB-B running 64-bit major release  (build 9200)
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+RTL Linter Report
+
+Table of Contents
+-----------------
+1. Summary
+
+1. Summary
+----------
+
++-----------+--------------+----------+
+| Rule ID   | # Violations | # Waived |
++-----------+--------------+----------+
+| ASSIGN-5  | 27           | 0        |
+| ASSIGN-6  | 4            | 0        |
+| ASSIGN-9  | 4            | 0        |
+| ASSIGN-10 | 8            | 0        |
++-----------+--------------+----------+
+
+
+WARNING: [Synth 37-101] [ASSIGN-9]All bits in IO 'debug' are not set. First unset bit index is 3. 
+RTL Name 'debug', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 41.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'rx_dc' are not read. First unused bit index is 0. 
+RTL Name 'rx_dc', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 33.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'rx_full' are not read. First unused bit index is 0. 
+RTL Name 'rx_full', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 30.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'tx_dc' are not read. First unused bit index is 0. 
+RTL Name 'tx_dc', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 39.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'tx_empty' are not read. First unused bit index is 0. 
+RTL Name 'tx_empty', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 38.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'tx_full' are not read. First unused bit index is 0. 
+RTL Name 'tx_full', Hierarchy 'cmd_parser', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/cmd_parser.v', Line 37.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'pe_comb' declared and are not set.
+RTL Name 'pe_comb', Hierarchy 'tiny_uart', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/tiny_uart.vhd', Line 175.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'Address_in' are not set. First unset bit index is 0. 
+RTL Name 'Address_in', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 67.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'adc_ctrl_addr' are not set. First unset bit index is 0. 
+RTL Name 'adc_ctrl_addr', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 66.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'adc_ctrl_data' are not set. First unset bit index is 0. 
+RTL Name 'adc_ctrl_data', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 65.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'cfgBusy' declared and are not set.
+RTL Name 'cfgBusy', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 147.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'cfgLoad' declared and are not set.
+RTL Name 'cfgLoad', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 146.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'cfgStore' declared and are not set.
+RTL Name 'cfgStore', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 146.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'decimal' are not set. First unset bit index is 0. 
+RTL Name 'decimal', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 68.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'decimal_reg_in' are not set. First unset bit index is 0. 
+RTL Name 'decimal_reg_in', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 69.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig0' are not set. First unset bit index is 0. 
+RTL Name 'dig0', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 70.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig1' are not set. First unset bit index is 0. 
+RTL Name 'dig1', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 71.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig2' are not set. First unset bit index is 0. 
+RTL Name 'dig2', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 72.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig3' are not set. First unset bit index is 0. 
+RTL Name 'dig3', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 73.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig4' are not set. First unset bit index is 0. 
+RTL Name 'dig4', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 74.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig5' are not set. First unset bit index is 0. 
+RTL Name 'dig5', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 75.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'dig6' are not set. First unset bit index is 0. 
+RTL Name 'dig6', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 76.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'enable' declared and are not set.
+RTL Name 'enable', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 63.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'io_ctrl_disable' are not set. First unset bit index is 0. 
+RTL Name 'io_ctrl_disable', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 152.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'io_ctrl_set' are not set. First unset bit index is 0. 
+RTL Name 'io_ctrl_set', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 151.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'io_ctrl_wr' declared and are not set.
+RTL Name 'io_ctrl_wr', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 153.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'memAddr' are not set. First unset bit index is 0. 
+RTL Name 'memAddr', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 143.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'memDI' are not set. First unset bit index is 0. 
+RTL Name 'memDI', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 144.
+WARNING: [Synth 37-87] [ASSIGN-5]All bits in array 'memDO' are not set. First unset bit index is 0. 
+RTL Name 'memDO', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 145.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'memEn' declared and are not set.
+RTL Name 'memEn', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 146.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'memWen' declared and are not set.
+RTL Name 'memWen', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 146.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'ready' declared and are not set.
+RTL Name 'ready', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 64.
+WARNING: [Synth 37-95] [ASSIGN-5]Found scalar variable(s) 'rst_n' declared and are not set.
+RTL Name 'rst_n', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 80.
+WARNING: [Synth 37-93] [ASSIGN-6]Signal 'RTS' was assigned but not read. 
+RTL Name 'RTS', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 117.
+WARNING: [Synth 37-93] [ASSIGN-6]Signal 'io_ctrl_out' was assigned but not read. 
+RTL Name 'io_ctrl_out', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 154.
+WARNING: [Synth 37-93] [ASSIGN-6]Signal 'tx_full' was assigned but not read. 
+RTL Name 'tx_full', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 114.
+WARNING: [Synth 37-101] [ASSIGN-9]All bits in IO 'JC' are not set. First unset bit index is 1. 
+RTL Name 'JC', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 49.
+WARNING: [Synth 37-101] [ASSIGN-9]All bits in IO 'LED' are not set. First unset bit index is 0. 
+RTL Name 'LED', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 51.
+WARNING: [Synth 37-101] [ASSIGN-9]All bits in IO 'LED17_R' are not set. First unset bit index is 0. 
+RTL Name 'LED17_R', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 57.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'BTNC' are not read. First unused bit index is 0. 
+RTL Name 'BTNC', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 59.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'BTNU' are not read. First unused bit index is 0. 
+RTL Name 'BTNU', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 60.
+WARNING: [Synth 37-102] [ASSIGN-10]All bits in IO 'sw' are not read. First unused bit index is 0. 
+RTL Name 'sw', Hierarchy 'UARTdemo', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/hdl/top.v', Line 50.
+WARNING: [Synth 37-93] [ASSIGN-6]Signal 'tx_valid' was assigned but not read. 
+RTL Name 'tx_valid', Hierarchy 'uart_module', File 'C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/imports/new/uart_module.v', Line 169.
+INFO: [Synth 37-85] Total of 43 linter message(s) generated.
+INFO: [Synth 37-45] Linter Run Finished!
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2534.922 ; gain = 536.680
+INFO: [Common 17-83] Releasing license: Synthesis
+41 Infos, 68 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2534.922 ; gain = 536.680
+launch_runs synth_1 -jobs 4
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Fri Feb  2 18:42:54 2024] Launched synth_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/synth_1/runme.log
+file mkdir C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/constrs_1
+file mkdir C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/constrs_1/new
+close [ open C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/constrs_1/new/UARTDemo.xdc w ]
+add_files -fileset constrs_1 C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/constrs_1/new/UARTDemo.xdc
+reset_run synth_1
+INFO: [Project 1-1160] Copying file C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/synth_1/UARTdemo.dcp to C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/utils_1/imports/synth_1 and adding it to utils fileset
+launch_runs impl_1 -jobs 4
+[Fri Feb  2 19:01:32 2024] Launched synth_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/synth_1/runme.log
+[Fri Feb  2 19:01:32 2024] Launched impl_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Fri Feb  2 19:03:53 2024] Launched impl_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+
+****** Xilinx hw_server v2023.2.1
+  **** Build date : Dec 14 2023 at 13:42:59
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-13:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 2534.922 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292B9CFBEA
+set_property PROGRAM.FILE {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/UARTdemo.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/UARTdemo.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\top.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\cmd_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\top.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\cmd_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.srcs/utils_1/imports/synth_1/UARTdemo.dcp with file C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/synth_1/UARTdemo.dcp
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\decoder3_8.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\packet_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\segClkDevider.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\mux4_4bus.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\top.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\counter3bit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\new\cmd_parser.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [C:\Users\User1\Documents\Work\Nexys-A7-100T-UART\UART_Demo.srcs\sources_1\imports\hdl\sevensegdecoder.v:]
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Fri Feb  2 19:15:06 2024] Launched synth_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/synth_1/runme.log
+[Fri Feb  2 19:15:06 2024] Launched impl_1...
+Run output will be captured here: C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/runme.log
+close_hw_target {localhost:3121/xilinx_tcf/Digilent/210292B9CFBEA}
+INFO: [Labtoolstcl 44-464] Closing hw_target localhost:3121/xilinx_tcf/Digilent/210292B9CFBEA
+disconnect_hw_server localhost:3121
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+
+****** Xilinx hw_server v2023.2.1
+  **** Build date : Dec 14 2023 at 13:42:59
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+ECHO가 설정되어 있지 않습니다.
+ECHO가 설정되어 있지 않습니다.
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-13:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 2544.465 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292B9CFBEA
+set_property PROGRAM.FILE {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/UARTdemo.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.runs/impl_1/UARTdemo.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Feb  2 19:36:00 2024...
