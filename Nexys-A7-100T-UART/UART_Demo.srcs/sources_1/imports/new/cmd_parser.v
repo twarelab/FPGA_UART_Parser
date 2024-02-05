@@ -214,6 +214,7 @@ module cmd_parser(
                     byte_counter <= 0;
                     data_length <= 0;
                     crc <= 0;
+                    cmd_valid <= 0;
                     if(~uart_rx_empty) begin
                         packet_parser_state <= PACKET_PARSER_CHECK_START;
                         uart_rx_rd_en <= 1'b1;//read enable
@@ -226,7 +227,7 @@ module cmd_parser(
                         packet_parser_state <= PACKET_PARSER_EXTRACT_CMD;
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -238,7 +239,7 @@ module cmd_parser(
                         packet_parser_state <= PACKET_PARSER_EXTRACT_LENGTH_0;
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -251,7 +252,7 @@ module cmd_parser(
                         packet_parser_state <= PACKET_PARSER_EXTRACT_LENGTH_1;
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -273,7 +274,7 @@ module cmd_parser(
                         endcase
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -300,7 +301,7 @@ module cmd_parser(
                         endcase
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -324,7 +325,7 @@ module cmd_parser(
                         // endcase
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -340,7 +341,7 @@ module cmd_parser(
                         end
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -368,7 +369,7 @@ module cmd_parser(
                         endcase
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end
@@ -385,7 +386,7 @@ module cmd_parser(
                         end
                     end else begin
                         if(receive_timeout) begin
-                            packet_parser_state <= PACKET_PARSER_IDLE;
+                            packet_parser_state <= PACKET_PARSER_FAIL;
                         end
                     end
                 end

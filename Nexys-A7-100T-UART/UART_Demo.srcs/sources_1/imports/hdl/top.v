@@ -148,25 +148,11 @@ module UARTdemo(
         .cmd_apsm1(cmd_apsm1),
         .cmd_apsm2(cmd_apsm2),
         .cmd_cpsm(cmd_cpsm),
-        // .cmd_apsm1_7(cmd_apsm1[7]),
-        // .cmd_apsm1_6(cmd_apsm1[6]),
-        // .cmd_apsm1_5(cmd_apsm1[5]),
-        // .cmd_apsm1_4(cmd_apsm1[4]),
-        // .cmd_apsm1_3(cmd_apsm1[3]),
-        // .cmd_apsm1_2(cmd_apsm1[2]),
-        // .cmd_apsm1_1(cmd_apsm1[1]),
-        // .cmd_apsm1_0(cmd_apsm1[0]),
-        // .cmd_apsm2_7(cmd_apsm2[7]),
-        // .cmd_apsm2_6(cmd_apsm2[6]),
-        // .cmd_apsm2_5(cmd_apsm2[5]),
-        // .cmd_apsm2_4(cmd_apsm2[4]),
-        // .cmd_apsm2_3(cmd_apsm2[3]),
-        // .cmd_apsm2_2(cmd_apsm2[2]),
-        // .cmd_apsm2_1(cmd_apsm2[1]),
-        // .cmd_apsm2_0(cmd_apsm2[0]),
-        .debug(LED)
+        // .debug(LED)
+        .debug()
     );
     
+    assign LED = cmd_apsm1[111:96]; 
     reg [8:0] memAddr;
     reg [31:0] memDI;
     wire [31:0] memDO;
