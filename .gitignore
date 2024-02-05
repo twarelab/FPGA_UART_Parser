@@ -4,3 +4,7 @@ impl_1
 *synth_1
 *.jou
 vivado_*.str
+Nexys-A7-100T-UART/UART_Demo.cache/wt/project.wpc
+Nexys-A7-100T-UART/UART_Demo.cache/wt/synthesis.wdf
+Nexys-A7-100T-UART/UART_Demo.cache/wt/webtalk_pa.xml
+Nexys-A7-100T-UART/UART_Demo.runs/.jobs/vrs_config_6.xml
