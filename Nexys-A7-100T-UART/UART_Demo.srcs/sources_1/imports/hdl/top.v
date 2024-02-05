@@ -119,27 +119,54 @@ module UARTdemo(
 //    .rx_data(LED[15:8])
     );
     
+
+    wire cmd_valid;
+    wire [(5*8)-1:0] cmd_apdu;
+    wire [(14*8)-1:0] cmd_apsm1;
+    wire [(14*8)-1:0] cmd_apsm2;
+    wire [(20*8)-1:0] cmd_cpsm;
     cmd_parser cmd_parset_inst(
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
         
         //rx
-        .rx_byte(rx_byte),
-        .rx_rd_en(rx_rd_en),
-        .rx_full(),
-        .rx_empty(rx_empty),
-        .rx_valid(rx_valid),
-        .rx_dc(),
+        .uart_rx_byte(rx_byte),
+        .uart_rx_rd_en(rx_rd_en),
+        .uart_rx_full(),
+        .uart_rx_empty(rx_empty),
+        .uart_rx_valid(rx_valid),
+        .uart_rx_dc(),
         
         .tx_byte(tx_byte),
         .tx_wr_en(tx_wr_en), 
         .tx_full(),
         .tx_empty(),
         .tx_dc(),
-    
-        .debug(LED[15:13])
+
+        .cmd_valid(cmd_valid),
+        .cmd_apdu(cmd_apdu),
+        .cmd_apsm1(cmd_apsm1),
+        .cmd_apsm2(cmd_apsm2),
+        .cmd_cpsm(cmd_cpsm),
+        // .cmd_apsm1_7(cmd_apsm1[7]),
+        // .cmd_apsm1_6(cmd_apsm1[6]),
+        // .cmd_apsm1_5(cmd_apsm1[5]),
+        // .cmd_apsm1_4(cmd_apsm1[4]),
+        // .cmd_apsm1_3(cmd_apsm1[3]),
+        // .cmd_apsm1_2(cmd_apsm1[2]),
+        // .cmd_apsm1_1(cmd_apsm1[1]),
+        // .cmd_apsm1_0(cmd_apsm1[0]),
+        // .cmd_apsm2_7(cmd_apsm2[7]),
+        // .cmd_apsm2_6(cmd_apsm2[6]),
+        // .cmd_apsm2_5(cmd_apsm2[5]),
+        // .cmd_apsm2_4(cmd_apsm2[4]),
+        // .cmd_apsm2_3(cmd_apsm2[3]),
+        // .cmd_apsm2_2(cmd_apsm2[2]),
+        // .cmd_apsm2_1(cmd_apsm2[1]),
+        // .cmd_apsm2_0(cmd_apsm2[0]),
+        .debug(LED)
     );
-     
+    
     reg [8:0] memAddr;
     reg [31:0] memDI;
     wire [31:0] memDO;
@@ -153,7 +180,7 @@ module UARTdemo(
     wire io_ctrl_wr;                // to slave main
     wire [31:0] io_ctrl_out;      // CHIP OUT
 
-    assign LED[12] = 1'b1;
+    // assign LED[12] = 1'b1;
     io_ctrl io_ctrl_inst(
         .clk(CLK100MHZ),//input wire clk,
         .nrst(sys_rst_n),//input wire rst_n,

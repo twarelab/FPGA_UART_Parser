@@ -2,10 +2,10 @@
 -- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2023.2.1 (win64) Build 4081461 Thu Dec 14 12:24:51 MST 2023
--- Date        : Fri Feb  2 18:39:51 2024
+-- Date        : Fri Feb  2 18:39:50 2024
 -- Host        : TWLAB-B running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Users/User1/Documents/Work/Nexys-A7-100T-UART/UART_Demo.gen/sources_1/ip/uart_fifo/uart_fifo_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top uart_fifo -prefix
+--               uart_fifo_ uart_fifo_stub.vhdl
 -- Design      : uart_fifo
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1
