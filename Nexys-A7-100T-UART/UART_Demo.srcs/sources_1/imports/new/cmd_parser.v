@@ -48,7 +48,7 @@ module cmd_parser(
         output reg cmd_valid,
         output wire [(5*8)-1:0] cmd_apdu,
         output wire [(14*8)-1:0] cmd_apsm1,
-        output wire [(14*8)-1:0] cmd_apsm2,
+        output wire [(14*3*8)-1:0] cmd_apsm2,
         output wire [(20*8)-1:0] cmd_cpsm,
         output reg [15:0] debug
     );
@@ -78,6 +78,10 @@ module cmd_parser(
     generate 
     for (i = 0; i < 14; i = i + 1) begin : flat_array1
         assign cmd_apsm1[(i*8)+7:(i*8)] = cmd_apsm1_p[i];
+    end
+    endgenerate
+    generate 
+    for (i = 0; i < 14*3; i = i + 1) begin : flat_array12
         assign cmd_apsm2[(i*8)+7:(i*8)] = cmd_apsm2_p[i];
     end
     endgenerate

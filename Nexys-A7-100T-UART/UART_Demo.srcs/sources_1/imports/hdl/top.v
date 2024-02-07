@@ -123,8 +123,15 @@ module UARTdemo(
     wire cmd_valid;
     wire [(5*8)-1:0] cmd_apdu;
     wire [(14*8)-1:0] cmd_apsm1;
-    wire [(14*8)-1:0] cmd_apsm2;
+    wire [(14*3*8)-1:0] cmd_apsm2;
     wire [(20*8)-1:0] cmd_cpsm;
+
+    wire arbiter_req;
+    reg arbiter_grant = 1'b1;
+    wire ext_wen;
+    wire [15:0] ext_addr;
+    wire [7:0] ext_data;
+
     cmd_parser cmd_parset_inst(
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
@@ -143,6 +150,12 @@ module UARTdemo(
         .tx_empty(),
         .tx_dc(),
 
+        .arbiter_req(arbiter_req),
+        .arbiter_grant(arbiter_grant),
+        .ext_wen(ext_wen),
+        .ext_addr(ext_addr),
+        .ext_data(ext_data),
+
         .cmd_valid(cmd_valid),
         .cmd_apdu(cmd_apdu),
         .cmd_apsm1(cmd_apsm1),
@@ -152,7 +165,11 @@ module UARTdemo(
         .debug()
     );
     
-    assign LED = cmd_apsm1[111:96]; 
+    // assign LED = cmd_apsm1[111:96]; 
+    // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
+    assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
+
+
     reg [8:0] memAddr;
     reg [31:0] memDI;
     wire [31:0] memDO;
