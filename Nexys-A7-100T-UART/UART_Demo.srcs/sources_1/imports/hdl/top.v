@@ -131,6 +131,10 @@ module UARTdemo(
     wire ext_wen;
     wire [15:0] ext_addr;
     wire [7:0] ext_data;
+    wire ext_rst;
+    wire [31:0] ext_io_set;
+    wire [31:0] ext_io_disable;
+    wire ext_io_wr;
 
     cmd_parser cmd_parset_inst(
         .clk(CLK100MHZ),
@@ -156,6 +160,11 @@ module UARTdemo(
         .ext_addr(ext_addr),
         .ext_data(ext_data),
 
+        .ext_rst(ext_rst),
+        .ext_io_set(ext_io_set),
+        .ext_io_disable(ext_io_disable),
+        .ext_io_wr(ext_io_wr),
+
         .cmd_valid(cmd_valid),
         .cmd_apdu(cmd_apdu),
         .cmd_apsm1(cmd_apsm1),
@@ -167,7 +176,8 @@ module UARTdemo(
     
     // assign LED = cmd_apsm1[111:96]; 
     // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
-    assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
+    // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
+    assign LED = {ext_io_set[7:0],cmd_apdu[7:0]}; 
 
 
     reg [8:0] memAddr;

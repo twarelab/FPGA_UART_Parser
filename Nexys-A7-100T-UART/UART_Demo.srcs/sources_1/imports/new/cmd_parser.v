@@ -44,6 +44,10 @@ module cmd_parser(
         output reg [15:0] ext_addr,
         output reg [7:0] ext_data,
 
+        output reg ext_rst,
+        output reg [31:0] ext_io_set,
+        output reg [31:0] ext_io_disable,
+        output reg ext_io_wr,
 
         output reg cmd_valid,
         output wire [(5*8)-1:0] cmd_apdu,
@@ -124,7 +128,7 @@ module cmd_parser(
         end
     end
     
-    reg [3:0] packet_parser_state;
+    reg [7:0] packet_parser_state;
     reg [7:0] checksum_calculated;
     reg [7:0] checksum_received;
     reg [7:0] buffer [128:0];
@@ -140,17 +144,18 @@ module cmd_parser(
     localparam PACKET_PARSER_EXTRACT_APSM2 = 7;
     localparam PACKET_PARSER_EXTRACT_CPSM = 8;
     localparam PACKET_PARSER_CHECK_CRC = 9;
-    localparam PACKET_PARSER_ARBITER = 10;
-    localparam PACKET_PARSER_SET_APSM1_COMMAND_FLAG = 11;
-    localparam PACKET_PARSER_SET_APSM1_COMMAND = 12;
-    localparam PACKET_PARSER_SET_APSM1_DATA = 13;
-    localparam PACKET_PARSER_SET_APSM2_COMMAND_FLAG = 14;
-    localparam PACKET_PARSER_SET_APSM2_COMMAND = 15;
-    localparam PACKET_PARSER_SET_APSM2_DATA = 16;
-    localparam PACKET_PARSER_SET_CPSM_COMMAND_FLAG = 17;
-    localparam PACKET_PARSER_SET_CPSM_COMMAND = 18;
-    localparam PACKET_PARSER_SET_CPSM_DATA = 19;
-    localparam PACKET_PARSER_FAIL = 20;
+    localparam PACKET_PARSER_SET_APDU = 10;
+    localparam PACKET_PARSER_ARBITER = 11;
+    localparam PACKET_PARSER_SET_APSM1_COMMAND_FLAG = 12;
+    localparam PACKET_PARSER_SET_APSM1_COMMAND = 13;
+    localparam PACKET_PARSER_SET_APSM1_DATA = 14;
+    localparam PACKET_PARSER_SET_APSM2_COMMAND_FLAG = 15;
+    localparam PACKET_PARSER_SET_APSM2_COMMAND = 16;
+    localparam PACKET_PARSER_SET_APSM2_DATA = 17;
+    localparam PACKET_PARSER_SET_CPSM_COMMAND_FLAG = 18;
+    localparam PACKET_PARSER_SET_CPSM_COMMAND = 19;
+    localparam PACKET_PARSER_SET_CPSM_DATA = 20;
+    localparam PACKET_PARSER_FAIL = 21;
 
     localparam PACKET_CMD_RESET = 8'h03;    
     localparam PACKET_CMD_ON = 8'h13;
@@ -183,6 +188,10 @@ module cmd_parser(
             ext_wen <= 0;
             ext_addr <= 0;
             ext_data <= 0;
+            ext_rst <= 1;
+            ext_io_set <= 0;
+            ext_io_disable <= 0;
+            ext_io_wr <= 0;
 
             cmd_valid <= 0;
             for (ii=0;ii<CNT_APDU_DATA;ii=ii+1) begin
@@ -200,7 +209,9 @@ module cmd_parser(
             debug <= 0;
 
         end else begin
-            debug[3:0] <= packet_parser_state[3:0];
+            ext_rst <= 1;
+            ext_io_wr <= 0;
+            // debug[3:0] <= packet_parser_state[3:0];
             // debug[15:8] <= cmd_apdu_p[4];
             case(packet_parser_state)
                 PACKET_PARSER_IDLE: begin
@@ -213,6 +224,10 @@ module cmd_parser(
                     ext_wen <= 0;
                     ext_addr <= 0;
                     ext_data <= 0;
+                    ext_rst <= 1;
+                    // ext_io_set <= 0;
+                    // ext_io_disable <= 0;
+                    ext_io_wr <= 0;
 
                     cmd_valid <= 0;
                     if(~uart_rx_empty) begin
@@ -289,6 +304,11 @@ module cmd_parser(
                                 packet_parser_state <= PACKET_PARSER_EXTRACT_APSM1;
                             end
                             PACKET_CMD_ON: begin // ON 
+                                if (uart_rx_byte == 8'h00) begin
+                                    ext_io_set[byte_counter] <= 0;
+                                end else begin
+                                    ext_io_set[byte_counter] <= 1;
+                                end
                                 if (byte_counter == CNT_APDU_DATA-1) begin // 5 bytes
                                     byte_counter <= 0;
                                     packet_parser_state <= PACKET_PARSER_EXTRACT_APSM1;
@@ -381,13 +401,9 @@ module cmd_parser(
                     if(uart_rx_valid) begin
                         debug[15:8] <= crc;
                         if(crc == uart_rx_byte) begin
-                            packet_parser_state <= PACKET_PARSER_ARBITER;
+                            packet_parser_state <= PACKET_PARSER_SET_APDU;
                             cmd_valid <= 1;
                             debug[4] <= 1;
-                            arbiter_req <= 1;
-                            ext_wen <= 0;
-                            ext_addr <= 0;
-                            ext_data <= 0;
                         end else begin
                             packet_parser_state <= PACKET_PARSER_IDLE;
                             cmd_valid <= 0;
@@ -399,8 +415,30 @@ module cmd_parser(
                         end
                     end
                 end
-                
+
+                PACKET_PARSER_SET_APDU: begin
+                    packet_parser_state <= PACKET_PARSER_ARBITER;
+                    case(cmd)
+                        PACKET_CMD_RESET: begin // RESET
+                            byte_counter <= 0;
+                            if (cmd_apdu_p[byte_counter] == 8'h01) begin
+                                ext_rst <= 0;
+                            end
+                        end
+                        PACKET_CMD_ON: begin // ON 
+                            ext_io_wr <= 1;
+                        end
+                        default: begin
+                            packet_parser_state <= PACKET_PARSER_IDLE;
+                        end
+                    endcase
+                end
+
                 PACKET_PARSER_ARBITER: begin
+                    arbiter_req <= 1;
+                    ext_wen <= 0;
+                    ext_addr <= 0;
+                    ext_data <= 0;
                     if (arbiter_grant == 1'b1) begin
                         packet_parser_state <= PACKET_PARSER_SET_APSM1_COMMAND_FLAG;
                     end
@@ -475,7 +513,7 @@ module cmd_parser(
                                     packet_parser_state <= PACKET_PARSER_SET_CPSM_COMMAND_FLAG;
                                 end
                             end
-                            PACKET_CMD_ON: begin // ON 
+                            PACKET_CMD_ON: begin // ON
                                 if (byte_counter == CNT_APSM2_DATA_ON-1) begin // 14*3 bytes
                                     byte_counter <= 0;
                                     packet_parser_state <= PACKET_PARSER_SET_CPSM_COMMAND_FLAG;
