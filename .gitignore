@@ -4,12 +4,8 @@ impl_1
 *synth_1
 *.jou
 vivado_*.str
-Nexys-A7-100T-UART/UART_Demo.cache/wt/project.wpc
-Nexys-A7-100T-UART/UART_Demo.cache/wt/synthesis.wdf
-Nexys-A7-100T-UART/UART_Demo.cache/wt/webtalk_pa.xml
-Nexys-A7-100T-UART/UART_Demo.runs/.jobs/vrs_config_6.xml
-240130_(사단급)안테나전원부_ICD_v0.0_티웨어랩.xlsx
-Nexys-A7-100T-UART/UART_Demo.cache/wt/synthesis_details.wdf
-Nexys-A7-100T-UART/UART_Demo.cache/ip/2023.2.1/d/e/de25d981660a0430/stats.txt
-Nexys-A7-100T-UART/UART_Demo.runs/.jobs
-Nexys-A7-100T-UART/UART_Demo.srcs/sources_1/bd/blk_regmem/ui/bd_483266ff.ui
+*.xlsx
+Nexys-A7-100T-UART/UART_Demo.runs/.jobs/
+*.tmp
+Nexys-A7-100T-UART/UARTdemo_behav.wcfg
+Nexys-A7-100T-UART/UART_Demo.cache/wt/
