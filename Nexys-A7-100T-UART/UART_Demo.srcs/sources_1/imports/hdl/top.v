@@ -120,11 +120,11 @@ module UARTdemo(
     );
     
 
-    wire cmd_valid;
-    wire [(5*8)-1:0] cmd_apdu;
-    wire [(14*8)-1:0] cmd_apsm1;
-    wire [(14*3*8)-1:0] cmd_apsm2;
-    wire [(20*8)-1:0] cmd_cpsm;
+    // wire cmd_valid;
+    // wire [(5*8)-1:0] cmd_apdu;
+    // wire [(14*8)-1:0] cmd_apsm1;
+    // wire [(14*3*8)-1:0] cmd_apsm2;
+    // wire [(20*8)-1:0] cmd_cpsm;
 
     wire arbiter_req;
     reg arbiter_grant = 1'b1;
@@ -165,19 +165,19 @@ module UARTdemo(
         .ext_io_disable(ext_io_disable),
         .ext_io_wr(ext_io_wr),
 
-        .cmd_valid(cmd_valid),
-        .cmd_apdu(cmd_apdu),
-        .cmd_apsm1(cmd_apsm1),
-        .cmd_apsm2(cmd_apsm2),
-        .cmd_cpsm(cmd_cpsm),
-        // .debug(LED)
-        .debug()
+        // .cmd_valid(cmd_valid),
+        // .cmd_apdu(cmd_apdu),
+        // .cmd_apsm1(cmd_apsm1),
+        // .cmd_apsm2(cmd_apsm2),
+        // .cmd_cpsm(cmd_cpsm),
+        .debug(LED)
+        // .debug()
     );
     
     // assign LED = cmd_apsm1[111:96]; 
     // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
     // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
-    assign LED = {ext_io_set[7:0],cmd_apdu[7:0]}; 
+    // assign LED = {ext_io_set[7:0],cmd_apdu[7:0]}; 
 
 
     reg [8:0] memAddr;

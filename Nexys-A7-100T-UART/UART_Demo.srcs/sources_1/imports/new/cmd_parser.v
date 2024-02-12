@@ -49,11 +49,11 @@ module cmd_parser(
         output reg [31:0] ext_io_disable,
         output reg ext_io_wr,
 
-        output reg cmd_valid,
-        output wire [(5*8)-1:0] cmd_apdu,
-        output wire [(14*8)-1:0] cmd_apsm1,
-        output wire [(14*3*8)-1:0] cmd_apsm2,
-        output wire [(20*8)-1:0] cmd_cpsm,
+        // output reg cmd_valid,
+        // output wire [(5*8)-1:0] cmd_apdu,
+        // output wire [(14*8)-1:0] cmd_apsm1,
+        // output wire [(14*3*8)-1:0] cmd_apsm2,
+        // output wire [(20*8)-1:0] cmd_cpsm,
         output reg [15:0] debug
     );
 
@@ -67,33 +67,32 @@ module cmd_parser(
     localparam BASE_APSM2_DATA = 16'h1800;
     localparam BASE_CPSM_DATA = 16'h2800;
     
-
     reg [7:0] cmd_apdu_p[CNT_APDU_DATA-1:0];
     reg [7:0] cmd_apsm1_p[CNT_APSM1_DATA-1:0];
     reg [7:0] cmd_apsm2_p[CNT_APSM2_DATA_ON-1:0];
     reg [7:0] cmd_cpsm_p[CNT_CPSM_DATA-1:0];
 
-    genvar i;
-    generate 
-    for (i = 0; i < 5; i = i + 1) begin : flat_array
-        assign cmd_apdu[(i*8)+7:(i*8)] = cmd_apdu_p[i];
-    end
-    endgenerate
-    generate 
-    for (i = 0; i < 14; i = i + 1) begin : flat_array1
-        assign cmd_apsm1[(i*8)+7:(i*8)] = cmd_apsm1_p[i];
-    end
-    endgenerate
-    generate 
-    for (i = 0; i < 14*3; i = i + 1) begin : flat_array12
-        assign cmd_apsm2[(i*8)+7:(i*8)] = cmd_apsm2_p[i];
-    end
-    endgenerate
-    generate 
-    for (i = 0; i < 20; i = i + 1) begin : flat_array2
-        assign cmd_cpsm[(i*8)+7:(i*8)] = cmd_cpsm_p[i];
-    end
-    endgenerate
+    // genvar i;
+    // generate 
+    // for (i = 0; i < 5; i = i + 1) begin : flat_array
+    //     assign cmd_apdu[(i*8)+7:(i*8)] = cmd_apdu_p[i];
+    // end
+    // endgenerate
+    // generate 
+    // for (i = 0; i < 14; i = i + 1) begin : flat_array1
+    //     assign cmd_apsm1[(i*8)+7:(i*8)] = cmd_apsm1_p[i];
+    // end
+    // endgenerate
+    // generate 
+    // for (i = 0; i < 14*3; i = i + 1) begin : flat_array12
+    //     assign cmd_apsm2[(i*8)+7:(i*8)] = cmd_apsm2_p[i];
+    // end
+    // endgenerate
+    // generate 
+    // for (i = 0; i < 20; i = i + 1) begin : flat_array2
+    //     assign cmd_cpsm[(i*8)+7:(i*8)] = cmd_cpsm_p[i];
+    // end
+    // endgenerate
 
     reg [31:0] time_counter;
     reg [3:0] timer_state;
@@ -193,7 +192,7 @@ module cmd_parser(
             ext_io_disable <= 0;
             ext_io_wr <= 0;
 
-            cmd_valid <= 0;
+//            cmd_valid <= 0;
             for (ii=0;ii<CNT_APDU_DATA;ii=ii+1) begin
                 cmd_apdu_p[ii] <= 0;
             end
@@ -229,7 +228,7 @@ module cmd_parser(
                     // ext_io_disable <= 0;
                     ext_io_wr <= 0;
 
-                    cmd_valid <= 0;
+//                    cmd_valid <= 0;
                     if(~uart_rx_empty) begin
                         packet_parser_state <= PACKET_PARSER_CHECK_START;
                         uart_rx_rd_en <= 1'b1;//read enable
@@ -399,15 +398,15 @@ module cmd_parser(
                 
                 PACKET_PARSER_CHECK_CRC: begin
                     if(uart_rx_valid) begin
-                        debug[15:8] <= crc;
+                        // debug[15:8] <= crc;
                         if(crc == uart_rx_byte) begin
                             packet_parser_state <= PACKET_PARSER_SET_APDU;
-                            cmd_valid <= 1;
-                            debug[4] <= 1;
+//                            cmd_valid <= 1;
+                            // debug[4] <= 1;
                         end else begin
                             packet_parser_state <= PACKET_PARSER_IDLE;
-                            cmd_valid <= 0;
-                            debug[4] <= 0;
+//                            cmd_valid <= 0;
+                            // debug[4] <= 0;
                         end
                     end else begin
                         if(receive_timeout) begin
@@ -479,9 +478,16 @@ module cmd_parser(
                         packet_parser_state <= PACKET_PARSER_IDLE;
                     end
                 end
-
+// $68$03$00$81
+// $01
+// $02$03$04$e5$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $01$02$f3$24$01$02$03$04$05$01$02$03$04$05$02$33
                 PACKET_PARSER_SET_APSM2_COMMAND_FLAG: begin
                     if (arbiter_grant == 1'b1) begin
+                        debug[15:8] <= ext_addr[7:0];
+                        debug[7:0] <= ext_data;
                         ext_addr <= BASE_APSM2_DATA;
                         ext_data <= 1;
                         packet_parser_state <= PACKET_PARSER_SET_APSM2_COMMAND;
