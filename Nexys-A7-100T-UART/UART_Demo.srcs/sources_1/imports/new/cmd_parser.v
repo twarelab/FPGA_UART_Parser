@@ -402,11 +402,11 @@ module cmd_parser(
                         if(crc == uart_rx_byte) begin
                             packet_parser_state <= PACKET_PARSER_SET_APDU;
 //                            cmd_valid <= 1;
-                            // debug[4] <= 1;
+                            debug[10] <= 1;
                         end else begin
                             packet_parser_state <= PACKET_PARSER_IDLE;
 //                            cmd_valid <= 0;
-                            // debug[4] <= 0;
+                            debug[10] <= 0;
                         end
                     end else begin
                         if(receive_timeout) begin
@@ -422,6 +422,9 @@ module cmd_parser(
                             byte_counter <= 0;
                             if (cmd_apdu_p[byte_counter] == 8'h01) begin
                                 ext_rst <= 0;
+                                debug[9] <= 1;
+                            end else begin
+                                debug[9] <= 0;
                             end
                         end
                         PACKET_CMD_ON: begin // ON 
@@ -440,6 +443,9 @@ module cmd_parser(
                     ext_data <= 0;
                     if (arbiter_grant == 1'b1) begin
                         packet_parser_state <= PACKET_PARSER_SET_APSM1_COMMAND_FLAG;
+                        debug[15:11] <= 0;
+                        debug[8] <= ext_io_wr;
+                        debug[7:0] <= ext_io_set[7:0];
                     end
                 end
 
@@ -478,16 +484,48 @@ module cmd_parser(
                         packet_parser_state <= PACKET_PARSER_IDLE;
                     end
                 end
+// RESET
 // $68$03$00$81
 // $01
 // $02$03$04$e5$01
 // $02$03$04$05$01
 // $02$03$04$05
-// $01$02$f3$24$01$02$03$04$05$01$02$03$04$05$02$33
+// $01$02$f3$24$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $02
+// $33
+
+// ON
+// $68$13$00$81
+// $11$12$00$14$15
+// $02$03$04$e5$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $01$02$f3$24$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $01$02$f3$24$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $01$02$f3$24$01
+// $02$03$04$05$01
+// $02$03$04$05
+// $21$12$13$14$25
+// $31$12$13$14$35
+// $41$12$13$14$45
+// $51$12$13$14$55
+// $B8
+
+// $68$13$00$81$11$12$00$14$15$02$03$04$e5$01$02$03$04$05$01$02$03$04$05$01$02$f3$24$01$02$03$04$05$01$02$03$04$05$01$02$f3$24$01$02$03$04$05
+// $01$02$03$04$05$01$02$f3$24$01$02$03$04$05$01$02$03$04$05$21$12$13$14$25$31$12$13$14$35$41$12$13$14$45$51$12$13$14$55$B8
+
+
+
                 PACKET_PARSER_SET_APSM2_COMMAND_FLAG: begin
                     if (arbiter_grant == 1'b1) begin
-                        debug[15:8] <= ext_addr[7:0];
-                        debug[7:0] <= ext_data;
+                        // debug[15:8] <= ext_addr[7:0];
+                        // debug[7:0] <= ext_data;
                         ext_addr <= BASE_APSM2_DATA;
                         ext_data <= 1;
                         packet_parser_state <= PACKET_PARSER_SET_APSM2_COMMAND;
