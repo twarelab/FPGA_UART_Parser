@@ -156,10 +156,9 @@ module cmd_parser(
     localparam PACKET_PARSER_SET_CPSM_DATA = 20;
     localparam PACKET_PARSER_FAIL = 21;
 
+    localparam PACKET_CMD = 8'h68;
     localparam PACKET_CMD_RESET = 8'h03;    
     localparam PACKET_CMD_ON = 8'h13;
-
-    localparam CMD_ID = 8'h68;
 
     reg [15:0] data_length;
     reg [15:0] byte_counter;
@@ -236,7 +235,7 @@ module cmd_parser(
                 end
                 PACKET_PARSER_CHECK_START: begin
                     //read rx_byte
-                    if(uart_rx_valid && uart_rx_byte == CMD_ID) begin //uart_rx_byte is 0x7A and data is on fifo
+                    if(uart_rx_valid && uart_rx_byte == PACKET_CMD) begin //uart_rx_byte is 0x7A and data is on fifo
                         crc <= uart_rx_byte;
                         packet_parser_state <= PACKET_PARSER_EXTRACT_CMD;
                     end else begin

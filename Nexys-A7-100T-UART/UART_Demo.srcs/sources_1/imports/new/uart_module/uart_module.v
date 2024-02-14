@@ -56,6 +56,7 @@ module uart_module #(
         
     wire [7:0] rx_data;
     wire [7:0] tx_data;
+    wire tx_valid;
     
     tiny_uart uart(
             .R(~nrst),          // asynchrony reset
@@ -135,8 +136,10 @@ module uart_module #(
                 end
                 TX_FIFO_LOAD:begin
                     tx_rd_en <= 0; //read disable  
-                    thrl <= 1;  // load tx hold register
-                    txState <= TX_LOAD;
+                    if (tx_valid == 1'b1) begin
+                        thrl <= 1;  // load tx hold register
+                        txState <= TX_LOAD;
+                    end
                 end
                 TX_LOAD:begin
                     thrl <= 0;  //trigger down

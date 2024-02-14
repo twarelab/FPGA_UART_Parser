@@ -89,6 +89,9 @@ module UARTdemo(
     
     wire [7:0] tx_byte;
     wire [7:0] rx_byte;
+    wire tx_wr_en;
+    wire tx_full;
+    wire tx_empty;
     
     //460800 bps
     uart_module uart_inst (
@@ -112,7 +115,7 @@ module UARTdemo(
         .tx_byte(tx_byte),
         .tx_wr_en(tx_wr_en),
         .tx_full(tx_full),
-        .tx_empty(),
+        .tx_empty(tx_empty),
         .tx_dc(),
         .rts(RTS)
     
@@ -136,7 +139,7 @@ module UARTdemo(
     wire [31:0] ext_io_disable;
     wire ext_io_wr;
 
-    cmd_parser cmd_parset_inst(
+    cmd_parser cmd_parser_inst(
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
         
@@ -148,8 +151,8 @@ module UARTdemo(
         .uart_rx_valid(rx_valid),
         .uart_rx_dc(),
         
-        .tx_byte(tx_byte),
-        .tx_wr_en(tx_wr_en), 
+        .tx_byte(),
+        .tx_wr_en(), 
         .tx_full(),
         .tx_empty(),
         .tx_dc(),
@@ -179,6 +182,42 @@ module UARTdemo(
     // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
     // assign LED = {ext_io_set[7:0],cmd_apdu[7:0]}; 
 
+    wire ss_arbiter_req;
+    reg ss_arbiter_grant = 1'b1;
+    wire ss_ext_wen;
+    wire [15:0] ss_ext_addr;
+    reg [7:0] ss_ext_data;
+    wire [15:0] ss_debug;
+
+    integer ii;
+//    assign debug[3:0] = status_sender_state[3:0];
+    always @ (posedge(CLK100MHZ) or negedge(sys_rst_n)) begin
+        if(~sys_rst_n) begin
+            ss_ext_data <= 8'h00;
+        end else begin
+            // ss_ext_data <= ss_ext_data + 1;
+            ss_ext_data <= 8'h01;
+        end
+    end
+
+    status_sender status_sender_inst(
+        .clk(CLK100MHZ),
+        .nrst(sys_rst_n),
+        
+        .tx_byte(tx_byte),
+        .tx_wr_en(tx_wr_en), 
+        .tx_full(tx_full),
+        .tx_empty(tx_empty),
+        .tx_dc(),
+
+        .arbiter_req(ss_arbiter_req),
+        .arbiter_grant(ss_arbiter_grant),
+        .ext_en(ss_ext_en),
+        .ext_addr(ss_ext_addr),
+        .ext_data(ss_ext_data),
+
+        .debug(ss_debug)
+    );
 
     reg [8:0] memAddr;
     reg [31:0] memDI;
