@@ -188,15 +188,22 @@ module UARTdemo(
     wire [15:0] ss_ext_addr;
     reg [7:0] ss_ext_data;
     wire [15:0] ss_debug;
+    wire [5:0] adc_address;   //register address: total 64 channel
+    wire adc_rd;           //rd enable
+    reg [15:0] adc_data; //conversion data out 16 bit
+    wire scrd;
+    wire [3:0] psu_ond;
 
     integer ii;
 //    assign debug[3:0] = status_sender_state[3:0];
     always @ (posedge(CLK100MHZ) or negedge(sys_rst_n)) begin
         if(~sys_rst_n) begin
             ss_ext_data <= 8'h00;
+            adc_data <= 16'h0000;
         end else begin
             // ss_ext_data <= ss_ext_data + 1;
             ss_ext_data <= 8'h01;
+            adc_data <= 16'h0002;
         end
     end
 
@@ -210,11 +217,22 @@ module UARTdemo(
         .tx_empty(tx_empty),
         .tx_dc(),
 
+        //to adc_ctrl
+        // output reg [5:0] adc_address,   //register address: total 64 channel
+        // output reg adc_rd,           //rd enable
+        // input wire [15:0] adc_data, //conversion data out 16 bit
+        .adc_address(),   //register address: total 64 channel
+        .adc_rd(),           //rd enable
+        .adc_data(), //conversion data out 16 bit
+
         .arbiter_req(ss_arbiter_req),
         .arbiter_grant(ss_arbiter_grant),
         .ext_en(ss_ext_en),
         .ext_addr(ss_ext_addr),
         .ext_data(ss_ext_data),
+
+        .scrd(scrd),
+        .psu_ond(psu_ond),
 
         .debug(ss_debug)
     );
