@@ -128,6 +128,8 @@ module status_sender(
     reg [7:0] fault_apdu_p[CNT_APDU_FAULT_DATA-1:0];
     reg [7:0] adc_apdu_p[CNT_APDU_ADC_DATA-1:0];
 
+    localparam OUTPUT_NUM = 7;
+
     localparam ADDR_TEMPERATURE = 7;
     localparam ADDR_INPUT_270V_VOL = 0;
     localparam ADDR_INPUT_270V_AMP = 0;
@@ -154,8 +156,6 @@ module status_sender(
 
     // reg [15:0] config_register [512:0];
     reg [31:0] io_curr;
-    reg [7:0] temp_byte;
-
     reg [7:0] test_message [6:0];// cmd 1, addres 2, data 4
     reg [15:0] test_message_counter;
     
@@ -172,7 +172,6 @@ module status_sender(
     reg [31:0] transition_delay_counter;
     wire system_fault;
     assign system_fault = fault_state[ADDR_TEMPERATURE][1] | fault_state[ADDR_INPUT_270V_VOL][0] | fault_state[ADDR_INPUT_28V_VOL][1] | fault_state[ADDR_INPUT_270V_AMP][1];
-    reg [15:0] out_counter;
     
     parameter [7:0] OUTPUT_ORDER [0:39] = {
         ADDR_INPUT_28V_AMP, ADDR_INPUT_28V_VOL, // current | voltage
@@ -530,13 +529,17 @@ module status_sender(
     localparam STATUS_SENDER_OP = 2;
     localparam STATUS_SENDER_EXTRACT_LENGTH_0 = 3;
     localparam STATUS_SENDER_EXTRACT_LENGTH_1 = 4;
-    localparam STATUS_SENDER_EXTRACT_APDU = 5;
-    localparam STATUS_SENDER_EXTRACT_APDU_1 = 15;
-    localparam STATUS_SENDER_EXTRACT_APDU_ADC = 6;
-    localparam STATUS_SENDER_EXTRACT_APSM1 = 7;
-    localparam STATUS_SENDER_EXTRACT_APSM2 = 8;
-    localparam STATUS_SENDER_EXTRACT_CPSM = 9;
-    localparam STATUS_SENDER_CHECK_CRC = 10;
+    localparam STATUS_SENDER_EXTRACT_INPUT_270V_FAULT = 5;
+    localparam STATUS_SENDER_EXTRACT_FAULT = 6;
+    localparam STATUS_SENDER_VAL_TEMP_0 = 7;
+    localparam STATUS_SENDER_VAL_TEMP_1 = 8;
+    localparam STATUS_SENDER_VAL_INPUT_270V_VOL = 9;
+    localparam STATUS_SENDER_VAL_INPUT_270V_AMP = 10;
+    localparam STATUS_SENDER_EXTRACT_APDU_ADC = 11;
+    localparam STATUS_SENDER_EXTRACT_APSM1 = 12;
+    localparam STATUS_SENDER_EXTRACT_APSM2 = 13;
+    localparam STATUS_SENDER_EXTRACT_CPSM = 14;
+    localparam STATUS_SENDER_CHECK_CRC = 15;
     // localparam STATUS_SENDER_END = 11;
 
     localparam PACKET_CMD = 8'h86;
@@ -544,6 +547,8 @@ module status_sender(
     localparam PACKET_LEN_0 = 8'h02; // 625
     localparam PACKET_LEN_1 = 8'h71;
 
+    reg [7:0] output_order_reg;
+    reg [7:0] temp_byte;
     reg [15:0] byte_counter;
     reg [7:0] crc;
     reg [31:0] sec_timer;
@@ -561,6 +566,8 @@ module status_sender(
             debug <= 0;
             sec_timer <= 0;
             status_sender_state <= STATUS_SENDER_IDLE;
+            temp_byte = 0;
+            output_order_reg = 0;
 
         end else begin
             case(status_sender_state)
@@ -620,32 +627,36 @@ module status_sender(
                         tx_byte <= PACKET_LEN_1;
                         crc <= crc + PACKET_LEN_1;
                         byte_counter <= 0;
-                        status_sender_state <= STATUS_SENDER_EXTRACT_APDU;
+                        status_sender_state <= STATUS_SENDER_EXTRACT_INPUT_270V_FAULT;
                     end else begin
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end
                 end
 
-                STATUS_SENDER_EXTRACT_APDU: begin
-                // MAIN_CMD_STATUS_FAULT_MAIN: begin
-                    // temp_byte = {system_fault,hot, xxx, ov, uv, oc, x}
-                    temp_byte = 0;
-                    // {fault_state[ADDR_TEMPERATURE][1],2'b00,fault_state[ADDR_INPUT_VOL],fault_state[ADDR_INPUT_AMP][1],1'b0};
-                    tx_byte <= temp_byte;//{system_fault,fault_state[ADDR_TEMPERATURE][1],2'b00,fault_state[ADDR_INPUT_VOL],fault_state[ADDR_INPUT_AMP][1],1'b0};
-                    crc <= crc + temp_byte;
-                    status_sender_state <= STATUS_SENDER_EXTRACT_APDU_1;
+                STATUS_SENDER_EXTRACT_INPUT_270V_FAULT: begin
+                    if (arbiter_grant == 1'b1) begin
+                        temp_byte = {system_fault,fault_state[ADDR_TEMPERATURE][1], 2'b00, fault_state[ADDR_INPUT_270V_VOL],fault_state[ADDR_INPUT_270V_AMP][1],1'b0};
+                        tx_byte <= temp_byte;//{system_fault,fault_state[ADDR_TEMPERATURE][1],2'b00,fault_state[ADDR_INPUT_VOL],fault_state[ADDR_INPUT_AMP][1],1'b0};
+                        crc <= crc + temp_byte;
+                        byte_counter <= 0;
+                        status_sender_state <= STATUS_SENDER_EXTRACT_FAULT;
+                    end else begin
+                        status_sender_state <= STATUS_SENDER_IDLE;
+                    end
                 end
 
-                STATUS_SENDER_EXTRACT_APDU_1: begin
-                    if(out_counter < 7) begin
-                    // if(out_counter < OUTPUT_NUM) begin
-                        temp_byte = {4'b0,fault_state[OUTPUT_ORDER[(out_counter << 1)]],fault_state[OUTPUT_ORDER[(out_counter << 1) + 1]][1],io_curr[out_counter]};//[X][X][X][X][ov][uv][oc][of]
+                STATUS_SENDER_EXTRACT_FAULT: begin
+                    if (arbiter_grant == 1'b1) begin
+                        temp_byte = {4'b0,fault_state[OUTPUT_ORDER[(byte_counter << 1)]],fault_state[OUTPUT_ORDER[(byte_counter << 1) + 1]][1],io_curr[byte_counter]};//[X][X][X][X][ov][uv][oc][of]
                         tx_byte <= temp_byte;
                         crc <= crc + temp_byte;
-                        out_counter <= out_counter + 1;
+                        byte_counter <= byte_counter + 1;
+                        if (byte_counter == OUTPUT_NUM - 1) begin // 7 faults
+                            byte_counter <= 0;
+                            status_sender_state <= STATUS_SENDER_VAL_TEMP_0;
+                        end
                     end else begin
-                        out_counter <= 0;
-                        status_sender_state <= STATUS_SENDER_EXTRACT_APDU_ADC;
+                        status_sender_state <= STATUS_SENDER_IDLE;
                     end
                 end
                 //     if (arbiter_grant == 1'b1) begin
@@ -660,17 +671,83 @@ module status_sender(
                 //         status_sender_state <= STATUS_SENDER_IDLE;
                 //     end
                 // end
-
+                STATUS_SENDER_VAL_TEMP_0: begin
+                    if (arbiter_grant == 1'b1) begin
+                        temp_byte = measured[ADDR_TEMPERATURE][15:8]; //temperature
+                        tx_byte <= temp_byte;
+                        crc <= crc + temp_byte;
+                        byte_counter <= 0;
+                        status_sender_state <= STATUS_SENDER_VAL_TEMP_1;
+                    end else begin
+                        status_sender_state <= STATUS_SENDER_IDLE;
+                    end
+                end
+                STATUS_SENDER_VAL_TEMP_1: begin
+                    if (arbiter_grant == 1'b1) begin
+                        temp_byte = measured[ADDR_TEMPERATURE][7:0]; //temperature
+                        tx_byte <= temp_byte;
+                        crc <= crc + temp_byte;
+                        byte_counter <= 0;
+                        status_sender_state <= STATUS_SENDER_VAL_INPUT_270V_VOL;
+                    end else begin
+                        status_sender_state <= STATUS_SENDER_IDLE;
+                    end
+                end
+                STATUS_SENDER_VAL_INPUT_270V_VOL: begin
+                    if (arbiter_grant == 1'b1) begin
+                        byte_counter <= byte_counter + 1;
+                        if (byte_counter == 0) begin // 7 faults
+                            temp_byte = measured[ADDR_INPUT_270V_VOL][15:8]; //input voltage
+                        end else begin
+                            temp_byte = measured[ADDR_INPUT_270V_VOL][7:0]; //input voltage
+                            byte_counter <= 0;
+                            status_sender_state <= STATUS_SENDER_VAL_INPUT_270V_AMP;
+                        end
+                        tx_byte <= temp_byte;
+                        crc <= crc + temp_byte;
+                    end else begin
+                        status_sender_state <= STATUS_SENDER_IDLE;
+                    end
+                end
+                STATUS_SENDER_VAL_INPUT_270V_AMP: begin
+                    if (arbiter_grant == 1'b1) begin
+                        byte_counter <= byte_counter + 1;
+                        if (byte_counter == 0) begin // 7 faults
+                            temp_byte = measured[ADDR_INPUT_270V_AMP][15:8]; //input amp
+                        end else begin
+                            temp_byte = measured[ADDR_INPUT_270V_AMP][7:0]; //input amp
+                            byte_counter <= 0;
+                            status_sender_state <= STATUS_SENDER_EXTRACT_APDU_ADC;
+                        end
+                        tx_byte <= temp_byte;
+                        crc <= crc + temp_byte;
+                    end else begin
+                        status_sender_state <= STATUS_SENDER_IDLE;
+                    end
+                end
                 STATUS_SENDER_EXTRACT_APDU_ADC: begin
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= adc_apdu_p[byte_counter];
-                        crc <= crc + adc_apdu_p[byte_counter];
                         byte_counter <= byte_counter + 1;
-                        if (byte_counter == CNT_APDU_ADC_DATA-1) begin // 17*2 bytes
+                        output_order_reg = OUTPUT_ORDER[byte_counter]; // voltage, current
+                        if (byte_counter[0] == 0) begin
+                            temp_byte = measured[output_order_reg][15:8]; // upper byte
+                        end else begin
+                            temp_byte = measured[output_order_reg][7:0]; // lower byte
+                        end
+                        tx_byte <= temp_byte;
+                        crc <= crc + temp_byte;
+                        if(byte_counter < (OUTPUT_NUM << 1)-1) begin // 14
                             byte_counter <= 0;
                             ext_addr <= BASE_APSM1_DATA_SS;
                             status_sender_state <= STATUS_SENDER_EXTRACT_APSM1;
                         end
+                        // tx_byte <= adc_apdu_p[byte_counter];
+                        // crc <= crc + adc_apdu_p[byte_counter];
+                        // if (byte_counter == CNT_APDU_ADC_DATA-1) begin // 17*2 bytes
+                        //     byte_counter <= 0;
+                        //     ext_addr <= BASE_APSM1_DATA_SS;
+                        //     status_sender_state <= STATUS_SENDER_EXTRACT_APSM1;
+                        // end
                     end else begin
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end
@@ -724,7 +801,7 @@ module status_sender(
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end
                 end
-                
+
                 STATUS_SENDER_CHECK_CRC: begin
                     tx_byte <= crc;
                     // tx_byte <= 8'h77;
