@@ -130,30 +130,33 @@ module status_sender(
 
     localparam OUTPUT_NUM = 7;
     localparam OUTPUT_NUM_4 = 7*2*2;
+    localparam BASIC_ADC_LIMIT = 8;
+    localparam MAX_ADC_LIMIT = 64-1;
+    
 
     localparam ADDR_TEMPERATURE = 7;
-    localparam ADDR_INPUT_270V_VOL = 0;
-    localparam ADDR_INPUT_270V_AMP = 0;
-    localparam ADDR_INPUT_28V_VOL = 0;
-    localparam ADDR_INPUT_28V_AMP = 0;
-    localparam ADDR_OUT_28V_VOL = 0;
-    localparam ADDR_OUT_28V_AMP = 0;
-    localparam ADDR_OUT_270V_1_VOL = 0;
-    localparam ADDR_OUT_270V_1_AMP = 0;
-    localparam ADDR_OUT_270V_2_VOL = 0;
-    localparam ADDR_OUT_270V_2_AMP = 0;
-    localparam ADDR_OUT_270V_3_VOL = 0;
-    localparam ADDR_OUT_270V_3_AMP = 0;
-    localparam ADDR_OUT_270V_4_VOL = 0;
-    localparam ADDR_OUT_270V_4_AMP = 0;
-    localparam ADDR_OUT_270V_5_VOL = 0;
-    localparam ADDR_OUT_270V_5_AMP = 0;
+    localparam ADDR_INPUT_270V_VOL = 1;
+    localparam ADDR_INPUT_270V_AMP = 2;
+    localparam ADDR_INPUT_28V_VOL = 3;
+    localparam ADDR_INPUT_28V_AMP = 4;
+    localparam ADDR_OUT_28V_VOL = 5;
+    localparam ADDR_OUT_28V_AMP = 6;
+    localparam ADDR_OUT_270V_1_VOL = 10;
+    localparam ADDR_OUT_270V_1_AMP = 11;
+    localparam ADDR_OUT_270V_2_VOL = 12;
+    localparam ADDR_OUT_270V_2_AMP = 13;
+    localparam ADDR_OUT_270V_3_VOL = 14;
+    localparam ADDR_OUT_270V_3_AMP = 15;
+    localparam ADDR_OUT_270V_4_VOL = 16;
+    localparam ADDR_OUT_270V_4_AMP = 17;
+    localparam ADDR_OUT_270V_5_VOL = 18;
+    localparam ADDR_OUT_270V_5_AMP = 19;
 
-    reg [1:0] fault_state[63:0]; // current fault state fault_state[][0]: low limit fault, fault_state[][1]: high limit fault
+    reg [1:0] fault_state[MAX_ADC_LIMIT:0]; // current fault state fault_state[][0]: low limit fault, fault_state[][1]: high limit fault
     reg [19:0] fault_shutdown;
-    reg [31:0] fault_high_limit_counter[63:0]; //fault high limit counter
-    reg [31:0] fault_low_limit_counter[63:0]; //fault low limit counter
-    reg signed [15:0] measured [63:0];  //measured value
+    reg [31:0] fault_high_limit_counter[MAX_ADC_LIMIT:0]; //fault high limit counter
+    reg [31:0] fault_low_limit_counter[MAX_ADC_LIMIT:0]; //fault low limit counter
+    reg signed [15:0] measured [MAX_ADC_LIMIT:0];  //measured value
 
     // reg [15:0] config_register [512:0];
     reg [31:0] io_curr;
@@ -198,9 +201,9 @@ module status_sender(
     };
     
     // according to schematic
-    parameter [7:0] default_config_map[0:63] = { // adc number to config map
+    parameter [7:0] default_config_map[0:MAX_ADC_LIMIT] = { // adc number to config map
         //0,1,7,8,9
-        8'h00, 8'h01, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'h02,
+        8'h00, 8'h01, 8'h01, 8'h00, 8'h03, 8'h04, 8'hff, 8'h02,
         8'h03, 8'h04, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff,
         8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff,
         8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff,
@@ -327,9 +330,9 @@ module status_sender(
         end else begin
             case(updater_state)
                 UPDATER_INIT: begin // delay
-                    if(init_counter <= 63) begin
+                    if(init_counter <= MAX_ADC_LIMIT) begin
                         init_counter <= init_counter + 1;
-                        if(init_counter <8) 
+                        if(init_counter < BASIC_ADC_LIMIT) 
                             fault_state[init_counter] <= 1; //set the main fault
                         else
                         fault_state[init_counter] <= 0; //init fault_state
@@ -358,7 +361,7 @@ module status_sender(
                 end
 
                 UPDATER_ADC_READ_CMD: begin // read command 
-                    if(adc_number <= 63) begin // 0 ~ 63
+                    if(adc_number <= MAX_ADC_LIMIT) begin // 0 ~ MAX_ADC_LIMIT
                         adc_address <= adc_number;
                         adc_rd <= 1'b1; //read enable
                         updater_state <= UPDATER_ADC_DECIMALIZE;
@@ -448,14 +451,14 @@ module status_sender(
                     limit_value = (source_type == CURRENT) ? 2118 : 74_152; //apsm 9.44 us, adc 6.6ms => 20ms : 700ms
                     if((measured[adc_number] > limit_high) && limit_high != 0) begin //if high limit
                         if(fault_high_limit_counter[adc_number] <= limit_value) begin // if 3 times
-                            if(adc_number >= 8 && io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b0) begin // when the output off
+                            if(adc_number >= BASIC_ADC_LIMIT && io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b0) begin // when the output off
                                // fault_high_limit_counter[adc_number] <= 0;//clear the counter
                                 fault_shutdown[((default_config_map[adc_number] - 3) >> 1)] <= 0;//clear the fault_shutdown
                             end else begin
                                 fault_high_limit_counter[adc_number] <= fault_high_limit_counter[adc_number] + 1;//increase
                             end
                         end else begin
-                            if(adc_number >= 8) begin
+                            if(adc_number >= BASIC_ADC_LIMIT) begin
                                 if(io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b1) begin //if output channel
                                     fault_state[adc_number][1] = 1'b1; //limit high alarm on
                                     fault_shutdown[((default_config_map[adc_number] - 3) >> 1)] <= fault_state[adc_number][1] | fault_state[adc_number][0];//set fault shutdown
@@ -468,7 +471,7 @@ module status_sender(
                     end else begin 
                         fault_high_limit_counter[adc_number] <= 0; //reset fault counter
                         //fault protection off
-                        if(adc_number >= 8) begin
+                        if(adc_number >= BASIC_ADC_LIMIT) begin
                             if(io_curr[(default_config_map[adc_number] - 3) >> 1] == 1'b1) begin
                                 //if on/off command is set io_curr
                                 fault_state[adc_number][1] = 0; //alarm off
@@ -480,14 +483,14 @@ module status_sender(
                     end
                     if(measured[adc_number] < limit_low && limit_low != 0) begin
                         if(fault_low_limit_counter[adc_number] < limit_value) begin // 
-                            if(adc_number >= 8 && io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b0) begin
+                            if(adc_number >= BASIC_ADC_LIMIT && io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b0) begin
                                 //fault_low_limit_counter[adc_number] <= 0; //reset the counter
                                 fault_shutdown[((default_config_map[adc_number] - 3) >> 1)] <= 0;//output shutdown
                             end else begin
                                 fault_low_limit_counter[adc_number] <= fault_low_limit_counter[adc_number] + 1;//increase the counter
                             end
                         end else begin//counter limit over
-                            if(adc_number >= 8) begin
+                            if(adc_number >= BASIC_ADC_LIMIT) begin
                                 if(io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b1) begin
                                     fault_state[adc_number][0] = 1'b1;//output alarm on
                                     fault_shutdown[((default_config_map[adc_number] - 3) >> 1)] <= fault_state[adc_number][1] | fault_state[adc_number][0];//set fault shutdown
@@ -500,7 +503,7 @@ module status_sender(
                     end else begin
                         fault_low_limit_counter[adc_number] <= 0;//reset fault counter
                         //fault protection off
-                        if(adc_number >= 8) begin
+                        if(adc_number >= BASIC_ADC_LIMIT) begin
                             if(io_curr[((default_config_map[adc_number] - 3) >> 1)] == 1'b1) begin
                                 fault_state[adc_number][0] = 0; //alarm off
                                 fault_shutdown[((default_config_map[adc_number] - 3) >> 1)] <= fault_state[adc_number][1] | fault_state[adc_number][0];//set fault shutdown
@@ -660,18 +663,6 @@ module status_sender(
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end
                 end
-                //     if (arbiter_grant == 1'b1) begin
-                //         tx_byte <= fault_apdu_p[byte_counter];
-                //         crc <= crc + fault_apdu_p[byte_counter];
-                //         byte_counter <= byte_counter + 1;
-                //         if (byte_counter == CNT_APDU_FAULT_DATA-1) begin // 8 bytes
-                //             byte_counter <= 0;
-                //             status_sender_state <= STATUS_SENDER_EXTRACT_APDU_ADC;
-                //         end
-                //     end else begin
-                //         status_sender_state <= STATUS_SENDER_IDLE;
-                //     end
-                // end
                 STATUS_SENDER_VAL_TEMP_0: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = measured[ADDR_TEMPERATURE][15:8]; //temperature
@@ -742,13 +733,6 @@ module status_sender(
                             ext_addr <= BASE_APSM1_DATA_SS;
                             status_sender_state <= STATUS_SENDER_EXTRACT_APSM1;
                         end
-                        // tx_byte <= adc_apdu_p[byte_counter];
-                        // crc <= crc + adc_apdu_p[byte_counter];
-                        // if (byte_counter == CNT_APDU_ADC_DATA-1) begin // 17*2 bytes
-                        //     byte_counter <= 0;
-                        //     ext_addr <= BASE_APSM1_DATA_SS;
-                        //     status_sender_state <= STATUS_SENDER_EXTRACT_APSM1;
-                        // end
                     end else begin
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end

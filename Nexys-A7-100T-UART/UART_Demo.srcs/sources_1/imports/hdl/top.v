@@ -228,9 +228,9 @@ module UARTdemo(
         // output reg [5:0] adc_address,   //register address: total 64 channel
         // output reg adc_rd,           //rd enable
         // input wire [15:0] adc_data, //conversion data out 16 bit
-        .adc_address(),   //register address: total 64 channel
-        .adc_rd(),           //rd enable
-        .adc_data(), //conversion data out 16 bit
+        .adc_address(adc_address),   //register address: total 64 channel
+        .adc_rd(adc_rd),           //rd enable
+        .adc_data(adc_data), //conversion data out 16 bit
 
         .arbiter_req(ss_arbiter_req),
         .arbiter_grant(ss_arbiter_grant),
