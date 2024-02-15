@@ -9,3 +9,5 @@ Nexys-A7-100T-UART/UART_Demo.runs/.jobs/
 *.tmp
 Nexys-A7-100T-UART/UARTdemo_behav.wcfg
 Nexys-A7-100T-UART/UART_Demo.cache/wt/
+Nexys-A7-100T-UART/UART_Demo.cache
+Nexys-A7-100T-UART/UART_Demo.ip_user_files/

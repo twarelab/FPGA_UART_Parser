@@ -176,7 +176,7 @@ module UARTdemo(
         .debug(LED)
         // .debug()
     );
-    
+
     // assign LED = cmd_apsm1[111:96]; 
     // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
     // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
@@ -193,6 +193,21 @@ module UARTdemo(
     reg [15:0] adc_data; //conversion data out 16 bit
     wire scrd;
     wire [3:0] psu_ond;
+    
+    // wire ena = ss_ext_en;
+    // wire wea = 1'b0;
+    // wire [9:0] addra = ss_ext_addr[9:0];
+    // reg [7:0] dina;
+    // wire [7:0] douta;
+    // blk_mem_gen_0 blk_mem_inst(
+    //     .clka(CLK100MHZ), //: IN STD_LOGIC;
+    //     .ena(ena), //: IN STD_LOGIC;
+    //     .wea(wea), //: IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    //     .addra(addra), //: IN STD_LOGIC_VECTOR(9 DOWNTO 0);
+    //     .dina(dina), //: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    //     .douta(douta) //: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+    // );   
+
 
     integer ii;
 //    assign debug[3:0] = status_sender_state[3:0];
@@ -236,7 +251,8 @@ module UARTdemo(
         .arbiter_grant(ss_arbiter_grant),
         .ext_en(ss_ext_en),
         .ext_addr(ss_ext_addr),
-        .ext_data(ss_ext_data),
+        // .ext_data(ss_ext_data),
+        .ext_data(douta),
 
         .scrd(scrd),
         .psu_ond(psu_ond),
