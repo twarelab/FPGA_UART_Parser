@@ -129,6 +129,7 @@ module status_sender(
     reg [7:0] adc_apdu_p[CNT_APDU_ADC_DATA-1:0];
 
     localparam OUTPUT_NUM = 7;
+    localparam OUTPUT_NUM_4 = 7*2*2;
 
     localparam ADDR_TEMPERATURE = 7;
     localparam ADDR_INPUT_270V_VOL = 0;
@@ -736,7 +737,7 @@ module status_sender(
                         end
                         tx_byte <= temp_byte;
                         crc <= crc + temp_byte;
-                        if(byte_counter < (OUTPUT_NUM << 1)-1) begin // 14
+                        if (byte_counter == OUTPUT_NUM_4 - 1) begin // 7*4
                             byte_counter <= 0;
                             ext_addr <= BASE_APSM1_DATA_SS;
                             status_sender_state <= STATUS_SENDER_EXTRACT_APSM1;

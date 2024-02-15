@@ -202,8 +202,15 @@ module UARTdemo(
             adc_data <= 16'h0000;
         end else begin
             // ss_ext_data <= ss_ext_data + 1;
-            ss_ext_data <= 8'h01;
-            adc_data <= 16'h0002;
+            
+            if (ss_ext_addr < 16'h1000) begin
+                ss_ext_data <= 8'h01;
+            end else if (ss_ext_addr < 16'h2000) begin
+                ss_ext_data <= 8'h02;
+            end else begin
+                ss_ext_data <= 8'h03;
+            end
+            adc_data <= 16'h1234;
         end
     end
 
