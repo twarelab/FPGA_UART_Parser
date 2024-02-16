@@ -135,9 +135,8 @@ module UARTdemo(
     wire [15:0] ext_addr;
     wire [7:0] ext_data;
     wire ext_rst;
-    wire [31:0] ext_io_set;
-    wire [31:0] ext_io_disable;
-    wire ext_io_wr;
+    wire [31:0] cmd_parser_io_set;
+    wire cmd_parser_io_wr;
 
     cmd_parser cmd_parser_inst(
         .clk(CLK100MHZ),
@@ -164,9 +163,8 @@ module UARTdemo(
         .ext_data(ext_data),
 
         .ext_rst(ext_rst),
-        .ext_io_set(ext_io_set),
-        .ext_io_disable(ext_io_disable),
-        .ext_io_wr(ext_io_wr),
+        .cmd_parser_io_set(cmd_parser_io_set),
+        .cmd_parser_io_wr(cmd_parser_io_wr),
 
         // .cmd_valid(cmd_valid),
         // .cmd_apdu(cmd_apdu),
@@ -180,7 +178,7 @@ module UARTdemo(
     // assign LED = cmd_apsm1[111:96]; 
     // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
     // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
-    // assign LED = {ext_io_set[7:0],cmd_apdu[7:0]}; 
+    // assign LED = {cmd_parser_io_set[7:0],cmd_apdu[7:0]}; 
 
     wire ss_arbiter_req;
     reg ss_arbiter_grant = 1'b1;
@@ -193,12 +191,15 @@ module UARTdemo(
     reg [15:0] adc_data; //conversion data out 16 bit
     wire scrd;
     wire [3:0] psu_ond;
+    wire [31:0] ext_io_set;
+    wire [31:0] ext_io_disable;
+    wire ext_io_wr;
     
-    // wire ena = ss_ext_en;
-    // wire wea = 1'b0;
-    // wire [9:0] addra = ss_ext_addr[9:0];
-    // reg [7:0] dina;
-    // wire [7:0] douta;
+    wire ena = ss_ext_en;
+    wire wea = 1'b0;
+    wire [9:0] addra = ss_ext_addr[9:0];
+    reg [7:0] dina;
+    wire [7:0] douta;
     // blk_mem_gen_0 blk_mem_inst(
     //     .clka(CLK100MHZ), //: IN STD_LOGIC;
     //     .ena(ena), //: IN STD_LOGIC;
@@ -247,12 +248,19 @@ module UARTdemo(
         .adc_rd(adc_rd),           //rd enable
         .adc_data(adc_data), //conversion data out 16 bit
 
+        .ext_io_set(ext_io_set),
+        .ext_io_disable(ext_io_disable),
+        .ext_io_wr(ext_io_wr),
+
+        .cmd_parser_io_set(cmd_parser_io_set),
+        .cmd_parser_io_wr(cmd_parser_io_wr),
+
         .arbiter_req(ss_arbiter_req),
         .arbiter_grant(ss_arbiter_grant),
         .ext_en(ss_ext_en),
         .ext_addr(ss_ext_addr),
-        // .ext_data(ss_ext_data),
-        .ext_data(douta),
+        .ext_data(ss_ext_data),
+        // .ext_data(douta),
 
         .scrd(scrd),
         .psu_ond(psu_ond),

@@ -45,9 +45,8 @@ module cmd_parser(
         output reg [7:0] ext_data,
 
         output reg ext_rst,
-        output reg [31:0] ext_io_set,
-        output reg [31:0] ext_io_disable,
-        output reg ext_io_wr,
+        output reg [31:0] cmd_parser_io_set,
+        output reg cmd_parser_io_wr,
 
         // output reg cmd_valid,
         // output wire [(5*8)-1:0] cmd_apdu,
@@ -187,9 +186,8 @@ module cmd_parser(
             ext_addr <= 0;
             ext_data <= 0;
             ext_rst <= 1;
-            ext_io_set <= 0;
-            ext_io_disable <= 0;
-            ext_io_wr <= 0;
+            cmd_parser_io_set <= 0;
+            cmd_parser_io_wr <= 0;
 
 //            cmd_valid <= 0;
             for (ii=0;ii<CNT_APDU_DATA;ii=ii+1) begin
@@ -208,7 +206,7 @@ module cmd_parser(
 
         end else begin
             ext_rst <= 1;
-            ext_io_wr <= 0;
+            cmd_parser_io_wr <= 0;
             // debug[3:0] <= packet_parser_state[3:0];
             // debug[15:8] <= cmd_apdu_p[4];
             case(packet_parser_state)
@@ -223,9 +221,7 @@ module cmd_parser(
                     ext_addr <= 0;
                     ext_data <= 0;
                     ext_rst <= 1;
-                    // ext_io_set <= 0;
-                    // ext_io_disable <= 0;
-                    ext_io_wr <= 0;
+                    cmd_parser_io_wr <= 0;
 
 //                    cmd_valid <= 0;
                     if(~uart_rx_empty) begin
@@ -303,9 +299,9 @@ module cmd_parser(
                             end
                             PACKET_CMD_ON: begin // ON 
                                 if (uart_rx_byte == 8'h00) begin
-                                    ext_io_set[byte_counter] <= 0;
+                                    cmd_parser_io_set[byte_counter] <= 0;
                                 end else begin
-                                    ext_io_set[byte_counter] <= 1;
+                                    cmd_parser_io_set[byte_counter] <= 1;
                                 end
                                 if (byte_counter == CNT_APDU_DATA-1) begin // 5 bytes
                                     byte_counter <= 0;
@@ -427,7 +423,7 @@ module cmd_parser(
                             end
                         end
                         PACKET_CMD_ON: begin // ON 
-                            ext_io_wr <= 1;
+                            cmd_parser_io_wr <= 1;
                         end
                         default: begin
                             packet_parser_state <= PACKET_PARSER_IDLE;
@@ -443,8 +439,8 @@ module cmd_parser(
                     if (arbiter_grant == 1'b1) begin
                         packet_parser_state <= PACKET_PARSER_SET_APSM1_COMMAND_FLAG;
                         debug[15:11] <= 0;
-                        debug[8] <= ext_io_wr;
-                        debug[7:0] <= ext_io_set[7:0];
+                        debug[8] <= cmd_parser_io_wr;
+                        debug[7:0] <= cmd_parser_io_set[7:0];
                     end
                 end
 
