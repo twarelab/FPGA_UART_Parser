@@ -19,6 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+`include "constants.vh"
 
 module status_sender(
         input clk,
@@ -652,7 +653,7 @@ module status_sender(
                 STATUS_SENDER_EXTRACT_INPUT_270V_FAULT: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = {system_fault,fault_state[ADDR_TEMPERATURE][1], 2'b00, fault_state[ADDR_INPUT_270V_VOL],fault_state[ADDR_INPUT_270V_AMP][1],1'b0};
-                        tx_byte <= temp_byte;//{system_fault,fault_state[ADDR_TEMPERATURE][1],2'b00,fault_state[ADDR_INPUT_VOL],fault_state[ADDR_INPUT_AMP][1],1'b0};
+                        tx_byte <= temp_byte;
                         crc <= crc + temp_byte;
                         byte_counter <= 0;
                         status_sender_state <= STATUS_SENDER_EXTRACT_FAULT;
