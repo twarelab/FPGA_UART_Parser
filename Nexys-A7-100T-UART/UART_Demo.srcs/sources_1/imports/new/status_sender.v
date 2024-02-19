@@ -20,12 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 `include "constants.vh"
+`define SIM_ONLY
 
 module status_sender(
         input clk,
         input nrst,
         
-        output reg [7:0] tx_byte,
+        output wire [7:0] tx_byte,
         output reg tx_wr_en, 
         input tx_full,
         input tx_empty,
@@ -336,8 +337,13 @@ module status_sender(
             dividend_valid <= 0;
             div_start <= 0;
             memory_access_counter <= 0;
-            for (ii=0;ii<MAX_ADC_LIMIT;ii=ii+1) begin
+            for (ii=0;ii<MAX_ADC_LIMIT+1;ii=ii+1) begin
                 fault_high_limit_counter[ii] <= 0;
+`ifdef SIM_ONLY
+                measured[ii] <= 16'h1369;
+`else
+                measured[ii] <= 0;
+`endif
             end            
 
         end else begin
@@ -353,7 +359,13 @@ module status_sender(
                     end else begin
                         if(main_ready) begin
                             // updater_state <= UPDATER_DELAY;
-                            if(delay_counter <= 1_000_000) begin //for the initial delay 10ms
+
+`ifdef SIM_ONLY
+                            if(delay_counter <= 10) //for the initial delay 10ms
+`else
+                            if(delay_counter <= 1_000_000) //for the initial delay 10ms
+`endif
+                            begin 
                                 delay_counter <= delay_counter + 1;
                             end else begin
                                 delay_counter <= 0;
@@ -570,11 +582,23 @@ module status_sender(
     reg [7:0] crc;
     reg [31:0] sec_timer;
 
+    reg [7:0] tx_byte_p;
+    reg [7:0] datain_p;
+    reg [7:0] datain_p_p;
+    assign tx_byte = 
+        (
+            (status_sender_state==STATUS_SENDER_EXTRACT_APSM1 && byte_counter>0) || 
+            (status_sender_state==STATUS_SENDER_EXTRACT_APSM2) || 
+            (status_sender_state==STATUS_SENDER_EXTRACT_CPSM)
+        ) ? ext_data : tx_byte_p;
+
     always @ (posedge(clk) or negedge(nrst)) begin
         if(~nrst) begin
             main_ready <= 0;
             tx_wr_en <= 0; 
-            tx_byte <= 0;
+            tx_byte_p <= 0;
+            datain_p <= 0;
+            datain_p_p <= 0;
             byte_counter <= 0;
             crc <= 0;
             arbiter_req <= 0;
@@ -590,14 +614,19 @@ module status_sender(
             case(status_sender_state)
                 STATUS_SENDER_IDLE: begin
                     tx_wr_en <= 1'b0;
-                    tx_byte <= 0;
+                    tx_byte_p <= 0;
                     byte_counter <= 0;
                     crc <= 0;
                     arbiter_req <= 0;
-                    ext_en <= 0;
+                    ext_en <= 1;
                     ext_addr <= 0;
 
-                    if(sec_timer <= 100_000_000) begin // 1 sec
+`ifdef SIM_ONLY
+                    if(sec_timer <= 100)  // 1 sec
+`else
+                    if(sec_timer <= 100_000_000) // 1 sec
+`endif
+                    begin
                         sec_timer <= sec_timer + 1'b1;
                     end else begin
                         sec_timer <= 0;
@@ -610,7 +639,7 @@ module status_sender(
                     if (arbiter_grant == 1'b1) begin
                         if (tx_empty == 1'b1) begin
                             tx_wr_en <= 1'b1;
-                            tx_byte <= PACKET_CMD;
+                            tx_byte_p <= PACKET_CMD;
                             crc <= PACKET_CMD;
                             status_sender_state <= STATUS_SENDER_OP;
                         end
@@ -622,7 +651,7 @@ module status_sender(
                 STATUS_SENDER_OP: begin
                     main_ready <= 1;
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= PACKET_OP;
+                        tx_byte_p <= PACKET_OP;
                         crc <= crc + PACKET_OP;
                         status_sender_state <= STATUS_SENDER_EXTRACT_LENGTH_0;
                     end else begin
@@ -632,7 +661,7 @@ module status_sender(
 
                 STATUS_SENDER_EXTRACT_LENGTH_0: begin 
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= PACKET_LEN_0;
+                        tx_byte_p <= PACKET_LEN_0;
                         crc <= crc + PACKET_LEN_0;
                         status_sender_state <= STATUS_SENDER_EXTRACT_LENGTH_1;
                     end else begin
@@ -641,7 +670,7 @@ module status_sender(
                 end
                 STATUS_SENDER_EXTRACT_LENGTH_1: begin 
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= PACKET_LEN_1;
+                        tx_byte_p <= PACKET_LEN_1;
                         crc <= crc + PACKET_LEN_1;
                         byte_counter <= 0;
                         status_sender_state <= STATUS_SENDER_EXTRACT_INPUT_270V_FAULT;
@@ -653,7 +682,7 @@ module status_sender(
                 STATUS_SENDER_EXTRACT_INPUT_270V_FAULT: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = {system_fault,fault_state[ADDR_TEMPERATURE][1], 2'b00, fault_state[ADDR_INPUT_270V_VOL],fault_state[ADDR_INPUT_270V_AMP][1],1'b0};
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                         byte_counter <= 0;
                         status_sender_state <= STATUS_SENDER_EXTRACT_FAULT;
@@ -665,7 +694,7 @@ module status_sender(
                 STATUS_SENDER_EXTRACT_FAULT: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = {4'b0,fault_state[OUTPUT_ORDER[(byte_counter << 1)]],fault_state[OUTPUT_ORDER[(byte_counter << 1) + 1]][1],ext_io_set[byte_counter]};//[X][X][X][X][ov][uv][oc][of]
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                         byte_counter <= byte_counter + 1;
                         if (byte_counter == OUTPUT_NUM - 1) begin // 7 faults
@@ -679,7 +708,7 @@ module status_sender(
                 STATUS_SENDER_VAL_TEMP_0: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = measured[ADDR_TEMPERATURE][15:8]; //temperature
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                         byte_counter <= 0;
                         status_sender_state <= STATUS_SENDER_VAL_TEMP_1;
@@ -690,7 +719,7 @@ module status_sender(
                 STATUS_SENDER_VAL_TEMP_1: begin
                     if (arbiter_grant == 1'b1) begin
                         temp_byte = measured[ADDR_TEMPERATURE][7:0]; //temperature
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                         byte_counter <= 0;
                         status_sender_state <= STATUS_SENDER_VAL_INPUT_270V_VOL;
@@ -708,7 +737,7 @@ module status_sender(
                             byte_counter <= 0;
                             status_sender_state <= STATUS_SENDER_VAL_INPUT_270V_AMP;
                         end
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                     end else begin
                         status_sender_state <= STATUS_SENDER_IDLE;
@@ -724,7 +753,7 @@ module status_sender(
                             byte_counter <= 0;
                             status_sender_state <= STATUS_SENDER_EXTRACT_APDU_ADC;
                         end
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                     end else begin
                         status_sender_state <= STATUS_SENDER_IDLE;
@@ -733,13 +762,13 @@ module status_sender(
                 STATUS_SENDER_EXTRACT_APDU_ADC: begin
                     if (arbiter_grant == 1'b1) begin
                         byte_counter <= byte_counter + 1;
-                        output_order_reg = OUTPUT_ORDER[byte_counter]; // voltage, current
+                        output_order_reg = OUTPUT_ORDER[byte_counter>>1]; // voltage, current
                         if (byte_counter[0] == 0) begin
                             temp_byte = measured[output_order_reg][15:8]; // upper byte
                         end else begin
                             temp_byte = measured[output_order_reg][7:0]; // lower byte
                         end
-                        tx_byte <= temp_byte;
+                        tx_byte_p <= temp_byte;
                         crc <= crc + temp_byte;
                         if (byte_counter == OUTPUT_NUM_4 - 1) begin // 7*4
                             byte_counter <= 0;
@@ -750,10 +779,9 @@ module status_sender(
                         status_sender_state <= STATUS_SENDER_IDLE;
                     end
                 end
-                
                 STATUS_SENDER_EXTRACT_APSM1: begin
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= ext_data;
+                        tx_byte_p <= ext_data;
                         crc <= crc + ext_data;
                         ext_addr <= ext_addr + 1;
                         byte_counter <= byte_counter + 1;
@@ -769,7 +797,7 @@ module status_sender(
 
                 STATUS_SENDER_EXTRACT_APSM2: begin  
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= ext_data;
+                        tx_byte_p <= ext_data;
                         crc <= crc + ext_data;
                         ext_addr <= ext_addr + 1;
                         byte_counter <= byte_counter + 1;
@@ -786,13 +814,13 @@ module status_sender(
 
                 STATUS_SENDER_EXTRACT_CPSM: begin 
                     if (arbiter_grant == 1'b1) begin
-                        tx_byte <= ext_data;
+                        tx_byte_p <= ext_data;
                         crc <= crc + ext_data;
                         ext_addr <= ext_addr + 1;
                         byte_counter <= byte_counter + 1;
                         if (byte_counter == CNT_CPSM_DATA_SS-1) begin // 107 bytes
                             byte_counter <= 0;
-                            ext_addr <= 0;
+                            // ext_addr <= 0;
                             status_sender_state <= STATUS_SENDER_CHECK_CRC;
                         end
                     end else begin
@@ -801,8 +829,11 @@ module status_sender(
                 end
 
                 STATUS_SENDER_CHECK_CRC: begin
-                    tx_byte <= crc;
-                    // tx_byte <= 8'h77;
+`ifdef SIM_ONLY
+                    tx_byte_p <= 8'h77;
+`else
+                    tx_byte_p <= crc;
+`endif
                     status_sender_state <= STATUS_SENDER_IDLE;
                 end
 

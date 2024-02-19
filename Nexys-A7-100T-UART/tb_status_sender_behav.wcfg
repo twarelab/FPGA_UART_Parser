@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_status_sender_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_xpm_cdc_sv_220102727 " />
+            <top_module name="glbl" />
+            <top_module name="tb_status_sender" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="8,078.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="8,374.367 ns"></ZoomEndTime>
+      <Cursor1Time time="8,315.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="64"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="56" />
+   <wave_markers>
+      <marker time="2025000" label="" />
+      <marker time="8325000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_status_sender/CLK100MHZ" type="logic">
+      <obj_property name="ElementShortName">CLK100MHZ</obj_property>
+      <obj_property name="ObjectShortName">CLK100MHZ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/sys_rst_n" type="logic">
+      <obj_property name="ElementShortName">sys_rst_n</obj_property>
+      <obj_property name="ObjectShortName">sys_rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/tx_wr_en" type="logic">
+      <obj_property name="ElementShortName">tx_wr_en</obj_property>
+      <obj_property name="ObjectShortName">tx_wr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/tx_byte" type="array">
+      <obj_property name="ElementShortName">tx_byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/ext_data" type="array">
+      <obj_property name="ElementShortName">ext_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/tx_byte_p" type="array">
+      <obj_property name="ElementShortName">tx_byte_p[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_byte_p[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_ext_addr" type="array">
+      <obj_property name="ElementShortName">ss_ext_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ss_ext_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/crc" type="array">
+      <obj_property name="ElementShortName">crc[7:0]</obj_property>
+      <obj_property name="ObjectShortName">crc[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/douta" type="array">
+      <obj_property name="ElementShortName">douta[7:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/status_sender_state" type="array">
+      <obj_property name="ElementShortName">status_sender_state[7:0]</obj_property>
+      <obj_property name="ObjectShortName">status_sender_state[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/temp_byte" type="array">
+      <obj_property name="ElementShortName">temp_byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">temp_byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/byte_counter" type="array">
+      <obj_property name="ElementShortName">byte_counter[15:0]</obj_property>
+      <obj_property name="ObjectShortName">byte_counter[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/status_sender_inst/measured" type="array">
+      <obj_property name="ElementShortName">measured[63:0][15:0]</obj_property>
+      <obj_property name="ObjectShortName">measured[63:0][15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/rx_byte" type="array">
+      <obj_property name="ElementShortName">rx_byte[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_byte[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/tx_full" type="logic">
+      <obj_property name="ElementShortName">tx_full</obj_property>
+      <obj_property name="ObjectShortName">tx_full</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/tx_empty" type="logic">
+      <obj_property name="ElementShortName">tx_empty</obj_property>
+      <obj_property name="ObjectShortName">tx_empty</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/arbiter_req" type="logic">
+      <obj_property name="ElementShortName">arbiter_req</obj_property>
+      <obj_property name="ObjectShortName">arbiter_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/arbiter_grant" type="logic">
+      <obj_property name="ElementShortName">arbiter_grant</obj_property>
+      <obj_property name="ObjectShortName">arbiter_grant</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_wen" type="logic">
+      <obj_property name="ElementShortName">ext_wen</obj_property>
+      <obj_property name="ObjectShortName">ext_wen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_addr" type="array">
+      <obj_property name="ElementShortName">ext_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_data" type="array">
+      <obj_property name="ElementShortName">ext_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_rst" type="logic">
+      <obj_property name="ElementShortName">ext_rst</obj_property>
+      <obj_property name="ObjectShortName">ext_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/cmd_parser_io_set" type="array">
+      <obj_property name="ElementShortName">cmd_parser_io_set[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cmd_parser_io_set[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/cmd_parser_io_wr" type="logic">
+      <obj_property name="ElementShortName">cmd_parser_io_wr</obj_property>
+      <obj_property name="ObjectShortName">cmd_parser_io_wr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_arbiter_req" type="logic">
+      <obj_property name="ElementShortName">ss_arbiter_req</obj_property>
+      <obj_property name="ObjectShortName">ss_arbiter_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_arbiter_grant" type="logic">
+      <obj_property name="ElementShortName">ss_arbiter_grant</obj_property>
+      <obj_property name="ObjectShortName">ss_arbiter_grant</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_ext_wen" type="logic">
+      <obj_property name="ElementShortName">ss_ext_wen</obj_property>
+      <obj_property name="ObjectShortName">ss_ext_wen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_ext_addr" type="array">
+      <obj_property name="ElementShortName">ss_ext_addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ss_ext_addr[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_ext_data" type="array">
+      <obj_property name="ElementShortName">ss_ext_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ss_ext_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_debug" type="array">
+      <obj_property name="ElementShortName">ss_debug[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ss_debug[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/adc_address" type="array">
+      <obj_property name="ElementShortName">adc_address[5:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_address[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/adc_rd" type="logic">
+      <obj_property name="ElementShortName">adc_rd</obj_property>
+      <obj_property name="ObjectShortName">adc_rd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/adc_data" type="array">
+      <obj_property name="ElementShortName">adc_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">adc_data[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/scrd" type="logic">
+      <obj_property name="ElementShortName">scrd</obj_property>
+      <obj_property name="ObjectShortName">scrd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/psu_ond" type="array">
+      <obj_property name="ElementShortName">psu_ond[3:0]</obj_property>
+      <obj_property name="ObjectShortName">psu_ond[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_io_set" type="array">
+      <obj_property name="ElementShortName">ext_io_set[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_io_set[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_io_disable" type="array">
+      <obj_property name="ElementShortName">ext_io_disable[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_io_disable[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ext_io_wr" type="logic">
+      <obj_property name="ElementShortName">ext_io_wr</obj_property>
+      <obj_property name="ObjectShortName">ext_io_wr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ena" type="logic">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/wea" type="logic">
+      <obj_property name="ElementShortName">wea</obj_property>
+      <obj_property name="ObjectShortName">wea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/addra" type="array">
+      <obj_property name="ElementShortName">addra[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/dina" type="array">
+      <obj_property name="ElementShortName">dina[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/douta" type="array">
+      <obj_property name="ElementShortName">douta[7:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ii" type="array">
+      <obj_property name="ElementShortName">ii[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ii[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/ss_ext_en" type="logic">
+      <obj_property name="ElementShortName">ss_ext_en</obj_property>
+      <obj_property name="ObjectShortName">ss_ext_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/dbiterra" type="logic">
+      <obj_property name="ElementShortName">dbiterra</obj_property>
+      <obj_property name="ObjectShortName">dbiterra</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/sbiterra" type="logic">
+      <obj_property name="ElementShortName">sbiterra</obj_property>
+      <obj_property name="ObjectShortName">sbiterra</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/sleep" type="logic">
+      <obj_property name="ElementShortName">sleep</obj_property>
+      <obj_property name="ObjectShortName">sleep</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/clka" type="logic">
+      <obj_property name="ElementShortName">clka</obj_property>
+      <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/rsta" type="logic">
+      <obj_property name="ElementShortName">rsta</obj_property>
+      <obj_property name="ObjectShortName">rsta</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/ena" type="logic">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/regcea" type="logic">
+      <obj_property name="ElementShortName">regcea</obj_property>
+      <obj_property name="ObjectShortName">regcea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/wea" type="array">
+      <obj_property name="ElementShortName">wea[0:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/addra" type="array">
+      <obj_property name="ElementShortName">addra[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/dina" type="array">
+      <obj_property name="ElementShortName">dina[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_status_sender/xpm_memory_spram_inst/douta" type="array">
+      <obj_property name="ElementShortName">douta[7:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[7:0]</obj_property>
+   </wvobject>
+</wave_config>
