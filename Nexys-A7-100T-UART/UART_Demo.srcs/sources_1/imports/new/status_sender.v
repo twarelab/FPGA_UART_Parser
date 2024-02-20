@@ -22,41 +22,45 @@
 `include "constants.vh"
 `define SIM_ONLY
 
-module status_sender(
-        input clk,
-        input nrst,
-        
-        output wire [7:0] tx_byte,
-        output reg tx_wr_en, 
-        input tx_full,
-        input tx_empty,
-        input [9:0] tx_dc,
+module status_sender#(
+    parameter MASTER_ID = 4'h6, // 422 server
+    parameter APDU_ID = 4'h8// apdu id
+)
+(
+    input clk,
+    input nrst,
+    
+    output wire [7:0] tx_byte,
+    output reg tx_wr_en, 
+    input tx_full,
+    input tx_empty,
+    input [9:0] tx_dc,
 
-        //to adc_ctrl
-        output reg [5:0] adc_address,   //register address: total 64 channel
-        output reg adc_rd,           //rd enable
-        input wire [15:0] adc_data, //conversion data out 16 bit
+    //to adc_ctrl
+    output reg [5:0] adc_address,   //register address: total 64 channel
+    output reg adc_rd,           //rd enable
+    input wire [15:0] adc_data, //conversion data out 16 bit
 
-        // to io_ctrl
-        output reg [31:0] ext_io_set,
-        output reg [31:0] ext_io_disable,
-        output reg ext_io_wr,
+    // to io_ctrl
+    output reg [31:0] ext_io_set,
+    output reg [31:0] ext_io_disable,
+    output reg ext_io_wr,
 
-        // from cmd_parser
-        input [31:0] cmd_parser_io_set,
-        input cmd_parser_io_wr,
+    // from cmd_parser
+    input [31:0] cmd_parser_io_set,
+    input cmd_parser_io_wr,
 
-        output reg arbiter_req,
-        input arbiter_grant,
-        output reg ext_en,
-        output reg [15:0] ext_addr,
-        input [7:0] ext_data,
+    output reg arbiter_req,
+    input arbiter_grant,
+    output reg ext_en,
+    output reg [15:0] ext_addr,
+    input [7:0] ext_data,
 
-        output reg scrd,
-        output reg [3:0] psu_ond,
+    output reg scrd,
+    output reg [3:0] psu_ond,
 
-        output reg [15:0] debug
-    );
+    output reg [15:0] debug
+);
     // genvar i;
     // generate 
     // for (i = 0; i < 5; i = i + 1) begin : flat_array
@@ -572,6 +576,7 @@ module status_sender(
     // localparam STATUS_SENDER_END = 11;
 
     localparam PACKET_CMD = 8'h86;
+    // localparam PACKET_CMD = (APDU_ID << 4 | MASTER_ID);
     localparam PACKET_OP = 8'hD3;
     localparam PACKET_LEN_0 = 8'h02; // 625
     localparam PACKET_LEN_1 = 8'h71;
@@ -639,8 +644,8 @@ module status_sender(
                     if (arbiter_grant == 1'b1) begin
                         if (tx_empty == 1'b1) begin
                             tx_wr_en <= 1'b1;
-                            tx_byte_p <= PACKET_CMD;
-                            crc <= PACKET_CMD;
+                            tx_byte_p <= (APDU_ID << 4 | MASTER_ID);
+                            crc <= (APDU_ID << 4 | MASTER_ID);
                             status_sender_state <= STATUS_SENDER_OP;
                         end
                     end else begin

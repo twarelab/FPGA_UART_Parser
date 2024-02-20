@@ -20,7 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module cmd_parser(
+module cmd_parser#(
+    parameter MASTER_ID = 4'h6, // 422 server
+    parameter APDU_ID = 4'h8// apdu id
+)
+(
         input clk,
         input nrst,
         
@@ -155,7 +159,11 @@ module cmd_parser(
     localparam PACKET_PARSER_SET_CPSM_DATA = 20;
     localparam PACKET_PARSER_FAIL = 21;
 
-    localparam PACKET_CMD = 8'h68;
+    // localparam PACKET_CMD = 8'h68;
+    // parameter MASTER_ID = 4'h6// 422 server
+    // parameter APDU_ID = 4'h8,// apdu id
+    localparam PACKET_CMD = MASTER_ID << 4 | APDU_ID;
+
     localparam PACKET_CMD_RESET = 8'h03;    
     localparam PACKET_CMD_ON = 8'h13;
 
@@ -231,7 +239,10 @@ module cmd_parser(
                 end
                 PACKET_PARSER_CHECK_START: begin
                     //read rx_byte
-                    if(uart_rx_valid && uart_rx_byte == PACKET_CMD) begin //uart_rx_byte is 0x7A and data is on fifo
+                    if(uart_rx_valid && 
+                        (uart_rx_byte[7:4] == MASTER_ID) &&
+                        (uart_rx_byte[3:0] == APDU_ID)
+                    ) begin //uart_rx_byte is 0x7A and data is on fifo
                         crc <= uart_rx_byte;
                         packet_parser_state <= PACKET_PARSER_EXTRACT_CMD;
                     end else begin
