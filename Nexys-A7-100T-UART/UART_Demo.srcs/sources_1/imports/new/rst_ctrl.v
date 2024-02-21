@@ -23,6 +23,7 @@
 module rst_ctrl(
     input wire clk,
     input wire nrst,
+    input wire watchdog_reset,
     output reg sys_rst_n
     );
     

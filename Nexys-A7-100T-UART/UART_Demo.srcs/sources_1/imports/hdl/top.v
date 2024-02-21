@@ -82,18 +82,48 @@ module UARTdemo(
     wire rst_n, sys_rst_n;
 //    wire LED16_B, LED17_R;
     assign LED16_B = sys_rst_n;
+
+    // assign LED = cmd_apsm1[111:96]; 
+    // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
+    // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
+    // assign LED = {cmd_parser_io_set[7:0],cmd_apdu[7:0]}; 
+
+    wire ss_arbiter_req;
+    reg ss_arbiter_grant = 1'b1;
+    wire ss_ext_en;
+    wire [15:0] ss_ext_addr;
+    reg [7:0] ss_ext_data;
+    wire [15:0] ss_debug;
+    wire [5:0] adc_address;   //register address: total 64 channel
+    wire adc_rd;           //rd enable
+    reg [15:0] adc_data; //conversion data out 16 bit
+    wire scrd;
+    wire [3:0] psu_ond;
+    wire [31:0] ext_io_set;
+    wire [31:0] ext_io_disable;
+    wire ext_io_wr;
+    wire watchdog_reset;
     
-    rst_ctrl rst_ctrl_inst (
-        .clk(CLK100MHZ),
-        .nrst(CPU_RESETN),
-        .sys_rst_n(sys_rst_n)
-    );
+    wire ena = ss_ext_en;
+    wire wea = 1'b0;
+    wire [9:0] addra = ss_ext_addr[9:0];
+    reg [7:0] dina;
+    wire [7:0] douta;
     
     wire [7:0] tx_byte;
     wire [7:0] rx_byte;
     wire tx_wr_en;
     wire tx_full;
     wire tx_empty;
+
+    integer ii;
+    
+    rst_ctrl rst_ctrl_inst (
+        .clk(CLK100MHZ),
+        .nrst(CPU_RESETN),
+        .watchdog_reset(watchdog_reset),
+        .sys_rst_n(sys_rst_n)
+    );
     
     //460800 bps
     uart_module uart_inst (
@@ -124,7 +154,6 @@ module UARTdemo(
 //    .rx_data(LED[15:8])
     );
     
-
     // wire cmd_valid;
     // wire [(5*8)-1:0] cmd_apdu;
     // wire [(14*8)-1:0] cmd_apsm1;
@@ -176,32 +205,6 @@ module UARTdemo(
         .debug(LED)
         // .debug()
     );
-
-    // assign LED = cmd_apsm1[111:96]; 
-    // assign LED = {ext_wen,ext_addr[6:0],ext_data[7:0]}; 
-    // assign LED = {cmd_cpsm[7:0],cmd_apsm1[8*14-1:7*8]}; 
-    // assign LED = {cmd_parser_io_set[7:0],cmd_apdu[7:0]}; 
-
-    wire ss_arbiter_req;
-    reg ss_arbiter_grant = 1'b1;
-    wire ss_ext_en;
-    wire [15:0] ss_ext_addr;
-    reg [7:0] ss_ext_data;
-    wire [15:0] ss_debug;
-    wire [5:0] adc_address;   //register address: total 64 channel
-    wire adc_rd;           //rd enable
-    reg [15:0] adc_data; //conversion data out 16 bit
-    wire scrd;
-    wire [3:0] psu_ond;
-    wire [31:0] ext_io_set;
-    wire [31:0] ext_io_disable;
-    wire ext_io_wr;
-    
-    wire ena = ss_ext_en;
-    wire wea = 1'b0;
-    wire [9:0] addra = ss_ext_addr[9:0];
-    reg [7:0] dina;
-    wire [7:0] douta;
     // blk_mem_gen_0 blk_mem_inst(
     //     .clka(CLK100MHZ), //: IN STD_LOGIC;
     //     .ena(ena), //: IN STD_LOGIC;
@@ -211,8 +214,6 @@ module UARTdemo(
     //     .douta(douta) //: OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     // );   
 
-
-    integer ii;
 //    assign debug[3:0] = status_sender_state[3:0];
     always @ (posedge(CLK100MHZ) or negedge(sys_rst_n)) begin
         if(~sys_rst_n) begin
@@ -231,7 +232,6 @@ module UARTdemo(
             adc_data <= 16'h1234;
         end
     end
-
     status_sender #(.MASTER_ID(`MASTER_ID), .APDU_ID(`APDU_ID)) status_sender_inst
     (
         .clk(CLK100MHZ),
@@ -250,6 +250,9 @@ module UARTdemo(
         .adc_address(adc_address),   //register address: total 64 channel
         .adc_rd(adc_rd),           //rd enable
         .adc_data(adc_data), //conversion data out 16 bit
+
+        // to reset ctrl
+        .watchdog_reset(watchdog_reset), //active low
 
         .ext_io_set(ext_io_set),
         .ext_io_disable(ext_io_disable),
@@ -276,7 +279,6 @@ module UARTdemo(
     wire [31:0] memDO;
     reg memEn, memWen, cfgLoad, cfgStore;
     wire cfgBusy;
-
 
     //io_ctrl
     wire [31:0] io_ctrl_set;              // to slave main

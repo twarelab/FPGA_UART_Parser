@@ -41,6 +41,9 @@ module status_sender#(
     output reg adc_rd,           //rd enable
     input wire [15:0] adc_data, //conversion data out 16 bit
 
+    // to reset ctrl
+    output reg watchdog_reset, //active low
+
     // to io_ctrl
     output reg [31:0] ext_io_set,
     output reg [31:0] ext_io_disable,
@@ -135,7 +138,7 @@ module status_sender#(
     localparam ADDR_OUT_270V_5_AMP = 19;
 
     reg [1:0] fault_state[MAX_ADC_LIMIT:0]; // current fault state fault_state[][0]: low limit fault, fault_state[][1]: high limit fault
-    reg [19:0] fault_shutdown;
+    reg [31:0] fault_shutdown;
     reg [31:0] fault_high_limit_counter[MAX_ADC_LIMIT:0]; //fault high limit counter
     reg [31:0] fault_low_limit_counter[MAX_ADC_LIMIT:0]; //fault low limit counter
     reg signed [15:0] measured [MAX_ADC_LIMIT:0];  //measured value
@@ -253,8 +256,9 @@ module status_sender#(
 // ===============================================
 // ===============================================
 // start measure, falut gen
-    //to adc_ctrl
     reg [3:0] updater_state;
+    reg [31:0] watchdog_counter;
+    reg [3:0] prev_updater_state;
     reg [15:0] source_type;
     reg [15:0] ratio;
     reg signed [15:0] limit_high;
@@ -298,9 +302,28 @@ module status_sender#(
 
     always @(posedge(clk) or negedge(nrst)) begin
         if(~nrst) begin
+            watchdog_reset <= 1;
+            watchdog_counter <= 0;
+            prev_updater_state <= UPDATER_INIT;
+        end else begin
+            prev_updater_state <= updater_state;
+            watchdog_counter <= 0;
+            if(prev_updater_state == updater_state) begin
+                if(watchdog_counter >= 300_000_000) begin// for a 3 sec
+                    //something wrong happened
+                    watchdog_reset <= 0;//assert system reset
+                end else begin
+                    watchdog_counter <= watchdog_counter + 1;
+                end
+            end
+        end
+    end
+
+    always @(posedge(clk) or negedge(nrst)) begin
+        if(~nrst) begin
             updater_state <= UPDATER_INIT;
             init_counter <= 0;
-            fault_shutdown <= 1'b1 << 20;
+            fault_shutdown <= '1;
             adc_number <= 0;
             delay_counter <= 0;
             limit_value <= 0;
@@ -839,9 +862,9 @@ module status_sender#(
             ext_io_disable <= 0;
             ext_io_wr <= 1;
             if (cmd_parser_io_wr == 1'b1) begin
-                ext_io_set <= cmd_parser_io_set & ~(fault_shutdown[19:0]) & {32{~system_fault}}; // current io & fault shutdown & system fault
+                ext_io_set <= cmd_parser_io_set & ~(fault_shutdown) & {32{~system_fault}}; // current io & fault shutdown & system fault
             end else begin
-                ext_io_set <= ext_io_set & ~(fault_shutdown[19:0]) & {32{~system_fault}}; // current io & fault shutdown & system fault;
+                ext_io_set <= ext_io_set & ~(fault_shutdown) & {32{~system_fault}}; // current io & fault shutdown & system fault;
             end
         end
     end

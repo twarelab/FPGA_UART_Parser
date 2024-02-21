@@ -207,7 +207,7 @@ module cmd_parser#(
             debug <= 0;
 
         end else begin
-            ext_rst <= 1;
+            // ext_rst <= 1;
             cmd_parser_io_wr <= 0;
             // debug[3:0] <= packet_parser_state[3:0];
             // debug[15:8] <= cmd_apdu_p[4];
@@ -222,8 +222,8 @@ module cmd_parser#(
                     ext_wen <= 0;
                     ext_addr <= 0;
                     ext_data <= 0;
-                    ext_rst <= 1;
-                    cmd_parser_io_wr <= 0;
+                    // ext_rst <= 1;
+                    // cmd_parser_io_wr <= 0;
 
 //                    cmd_valid <= 0;
                     if(~uart_rx_empty) begin
