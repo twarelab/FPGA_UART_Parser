@@ -43,6 +43,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns / 1ps
+`define MASTER_ID 4'h6
+`define APDU_ID 4'h8
 
 module UARTdemo(
     input CLK100MHZ,
@@ -78,7 +80,7 @@ module UARTdemo(
     reg [COUNTER_WIDTH-1:0] count = {COUNTER_WIDTH{1'b0}};
     
     wire rst_n, sys_rst_n;
-    wire LED16_B, LED17_R;
+//    wire LED16_B, LED17_R;
     assign LED16_B = sys_rst_n;
     
     rst_ctrl rst_ctrl_inst (
@@ -138,7 +140,7 @@ module UARTdemo(
     wire [31:0] cmd_parser_io_set;
     wire cmd_parser_io_wr;
 
-    cmd_parser cmd_parser_inst(
+    cmd_parser #(.MASTER_ID(`MASTER_ID), .APDU_ID(`APDU_ID)) cmd_parser_inst(
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
         
@@ -182,7 +184,7 @@ module UARTdemo(
 
     wire ss_arbiter_req;
     reg ss_arbiter_grant = 1'b1;
-    wire ss_ext_wen;
+    wire ss_ext_en;
     wire [15:0] ss_ext_addr;
     reg [7:0] ss_ext_data;
     wire [15:0] ss_debug;
@@ -230,7 +232,8 @@ module UARTdemo(
         end
     end
 
-    status_sender status_sender_inst(
+    status_sender #(.MASTER_ID(`MASTER_ID), .APDU_ID(`APDU_ID)) status_sender_inst
+    (
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
         

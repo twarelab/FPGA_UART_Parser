@@ -72,38 +72,6 @@ module status_sender#(
     //     assign cmd_apsm1[(i*8)+7:(i*8)] = cmd_apsm1_p[i];
     // end
     // endgenerate
-
-    reg [31:0] time_counter;
-    reg [3:0] timer_state;
-    reg receive_timeout;
-    reg main_ready;
-
-    localparam TIMER_IDLE = 0;
-    localparam TIMER_COUNT = 1;
-    
-    //timer
-    always @ (posedge(clk) or negedge(nrst)) begin
-        if(~nrst) begin
-            time_counter <= 0;
-            receive_timeout <= 1'b1;
-        end else begin
-            case(timer_state)
-                TIMER_IDLE: begin
-                    receive_timeout <= 1'b0;
-                    timer_state <= TIMER_COUNT;
-                end
-                TIMER_COUNT: begin
-                    if(time_counter <= 100_000_000) begin // 0.1 sec
-                        time_counter <= time_counter + 1'b1;
-                    end else begin
-                        receive_timeout <= 1'b1;
-                        time_counter <= 0;
-                        timer_state <= TIMER_IDLE;
-                    end
-                end
-            endcase
-        end
-    end
     
     reg [7:0] status_sender_state;
 
@@ -191,7 +159,7 @@ module status_sender#(
     wire system_fault;
     assign system_fault = fault_state[ADDR_TEMPERATURE][1] | fault_state[ADDR_INPUT_270V_VOL][0] | fault_state[ADDR_INPUT_28V_VOL][1] | fault_state[ADDR_INPUT_270V_AMP][1];
     
-    parameter [7:0] OUTPUT_ORDER [0:39] = {
+    localparam [7:0] OUTPUT_ORDER [0:39] = {
         ADDR_INPUT_28V_AMP, ADDR_INPUT_28V_VOL, // current | voltage
         ADDR_OUT_28V_AMP, ADDR_OUT_28V_VOL, // current | voltage
         ADDR_OUT_270V_1_AMP, ADDR_OUT_270V_1_VOL, // current | voltage
@@ -215,7 +183,7 @@ module status_sender#(
     };
     
     // according to schematic
-    parameter [7:0] default_config_map[0:MAX_ADC_LIMIT] = { // adc number to config map
+    localparam [7:0] default_config_map[0:MAX_ADC_LIMIT] = { // adc number to config map
         //0,1,7,8,9
         8'h00, 8'h01, 8'h01, 8'h00, 8'h03, 8'h04, 8'hff, 8'h02,
         8'h03, 8'h04, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff,
@@ -227,7 +195,7 @@ module status_sender#(
         8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff, 8'hff
     };
     
-    parameter [15:0] default_config_register[0:29] = {
+    localparam [15:0] default_config_register[0:29] = {
         //type | ratio | over | under | offset | adjustment
         16'd1,16'd1707,16'd60,16'd0,16'd3300,16'd200,//input current
         16'd0,16'd32886,16'd2900,16'd2500,16'd0,16'd100,//input voltage
@@ -326,6 +294,7 @@ module status_sender#(
     reg[31:0] limit_value;
     reg[15:0] init_counter;
     integer ii;
+    reg main_ready;
 
     always @(posedge(clk) or negedge(nrst)) begin
         if(~nrst) begin
@@ -337,12 +306,27 @@ module status_sender#(
             limit_value <= 0;
             adc_decimal <= 0;
             adc_wait_clk <= 0;
+            adc_address <= 0;
+            adc_rd <= 0;
             divisor_valid <= 0;
             dividend_valid <= 0;
             div_start <= 0;
+            divisor <= 0;
+            dividend <= 0;
+
             memory_access_counter <= 0;
+            source_type <= 0;
+            ratio <= 0;
+            limit_high <= 0;
+            limit_low <= 0;
+            offset <= 0;
+            adjustment <= 0;
+            signed_temp_register <= 0;
+
             for (ii=0;ii<MAX_ADC_LIMIT+1;ii=ii+1) begin
+                fault_state[ii] <= 0;
                 fault_high_limit_counter[ii] <= 0;
+                fault_low_limit_counter[ii] <= 0;
 `ifdef SIM_ONLY
                 measured[ii] <= 16'h1369;
 `else
@@ -586,10 +570,7 @@ module status_sender#(
     reg [15:0] byte_counter;
     reg [7:0] crc;
     reg [31:0] sec_timer;
-
     reg [7:0] tx_byte_p;
-    reg [7:0] datain_p;
-    reg [7:0] datain_p_p;
     assign tx_byte = 
         (
             (status_sender_state==STATUS_SENDER_EXTRACT_APSM1 && byte_counter>0) || 
@@ -602,8 +583,6 @@ module status_sender#(
             main_ready <= 0;
             tx_wr_en <= 0; 
             tx_byte_p <= 0;
-            datain_p <= 0;
-            datain_p_p <= 0;
             byte_counter <= 0;
             crc <= 0;
             arbiter_req <= 0;

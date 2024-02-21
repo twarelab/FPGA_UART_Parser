@@ -47,16 +47,17 @@ module uart_module #(
     output [9:0] tx_dc,
     
     //output for rs 485 interface
-    output rts
+    output reg rts
     
 //    output[7:0] rx_data
     );
     
-    reg rts;
+    // reg rts;
         
     wire [7:0] rx_data;
     wire [7:0] tx_data;
     wire tx_valid;
+    reg thrl = 0;
     
     tiny_uart uart(
             .R(~nrst),          // asynchrony reset
@@ -102,7 +103,6 @@ module uart_module #(
     
     reg [2:0] txState = TX_IDLE;
     reg tx_rd_en = 0;
-    reg thrl = 0;
     reg [31:0] rts_counter;
     
     //uart tx controller

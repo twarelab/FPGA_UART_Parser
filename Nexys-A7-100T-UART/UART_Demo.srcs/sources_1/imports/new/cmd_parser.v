@@ -109,6 +109,7 @@ module cmd_parser#(
         if(~nrst) begin
             time_counter <= 0;
             receive_timeout <= 1'b1;
+            timer_state <= TIMER_IDLE;
         end else begin
             case(timer_state)
                 TIMER_IDLE: begin
@@ -131,10 +132,7 @@ module cmd_parser#(
     end
     
     reg [7:0] packet_parser_state;
-    reg [7:0] checksum_calculated;
-    reg [7:0] checksum_received;
     reg [7:0] buffer [128:0];
-    reg [15:0] buffer_counter;
 
     localparam PACKET_PARSER_IDLE = 0;
     localparam PACKET_PARSER_CHECK_START = 1;
@@ -178,10 +176,6 @@ module cmd_parser#(
     always @ (posedge(clk) or negedge(nrst)) begin
         if(~nrst) begin
             packet_parser_state <= PACKET_PARSER_IDLE;
-            checksum_calculated <= 0;
-            checksum_received <= 0;
-            buffer_counter <= 0;
-
             uart_rx_rd_en <= 0;
             crc <= 0;
             cmd <= 0;
@@ -267,7 +261,6 @@ module cmd_parser#(
                     if(uart_rx_valid) begin
                         crc <= crc + uart_rx_byte;
                         byte_counter <= byte_counter + 1;
-
                         data_length[15:8] <= uart_rx_byte;
                         packet_parser_state <= PACKET_PARSER_EXTRACT_LENGTH_1;
                     end else begin
@@ -283,6 +276,7 @@ module cmd_parser#(
                         byte_counter <= 0;
                         case(cmd)
                             PACKET_CMD_RESET: begin // RESET
+                                // no data_length check now, data length check or not??
                                 packet_parser_state <= PACKET_PARSER_EXTRACT_APDU;
                             end
                             PACKET_CMD_ON: begin // ON 
