@@ -180,12 +180,6 @@ module UARTdemo(
         .uart_rx_empty(rx_empty),
         .uart_rx_valid(rx_valid),
         .uart_rx_dc(),
-        
-        .tx_byte(),
-        .tx_wr_en(), 
-        .tx_full(),
-        .tx_empty(),
-        .tx_dc(),
 
         .arbiter_req(arbiter_req),
         .arbiter_grant(arbiter_grant),
@@ -237,11 +231,11 @@ module UARTdemo(
         .clk(CLK100MHZ),
         .nrst(sys_rst_n),
         
-        .tx_byte(tx_byte),
-        .tx_wr_en(tx_wr_en), 
-        .tx_full(tx_full),
-        .tx_empty(tx_empty),
-        .tx_dc(),
+        .uart_tx_byte(tx_byte),
+        .uart_tx_wr_en(tx_wr_en), 
+        .uart_tx_full(tx_full),
+        .uart_tx_empty(tx_empty),
+        .uart_tx_dc(),
 
         //to adc_ctrl
         // output reg [5:0] adc_address,   //register address: total 64 channel

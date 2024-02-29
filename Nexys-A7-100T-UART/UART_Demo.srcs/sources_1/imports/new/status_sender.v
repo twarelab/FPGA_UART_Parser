@@ -19,7 +19,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "constants.vh"
 // `define SIM_ONLY
 
 module status_sender#(
@@ -30,11 +29,11 @@ module status_sender#(
     input clk,
     input nrst,
     
-    output wire [7:0] tx_byte,
-    output reg tx_wr_en, 
-    input tx_full,
-    input tx_empty,
-    input [9:0] tx_dc,
+    output wire [7:0] uart_tx_byte,
+    output reg uart_tx_wr_en, 
+    input uart_tx_full,
+    input uart_tx_empty,
+    input [9:0] uart_tx_dc,
 
     //to adc_ctrl
     output reg [5:0] adc_address,   //register address: total 64 channel
@@ -624,7 +623,7 @@ module status_sender#(
     reg [7:0] crc;
     reg [31:0] sec_timer;
     reg [7:0] tx_byte_p;
-    assign tx_byte = 
+    assign uart_tx_byte = 
         (
             (status_sender_state==STATUS_SENDER_EXTRACT_APSM1 && byte_counter>0) || 
             (status_sender_state==STATUS_SENDER_EXTRACT_APSM2) || 
@@ -634,7 +633,7 @@ module status_sender#(
     always @ (posedge(clk) or negedge(nrst)) begin
         if(~nrst) begin
             main_ready <= 0;
-            tx_wr_en <= 0; 
+            uart_tx_wr_en <= 0; 
             tx_byte_p <= 0;
             byte_counter <= 0;
             crc <= 0;
@@ -650,7 +649,7 @@ module status_sender#(
         end else begin
             case(status_sender_state)
                 STATUS_SENDER_IDLE: begin
-                    tx_wr_en <= 1'b0;
+                    uart_tx_wr_en <= 1'b0;
                     tx_byte_p <= 0;
                     byte_counter <= 0;
                     crc <= 0;
@@ -674,8 +673,8 @@ module status_sender#(
 
                 STATUS_SENDER_CHECK_START: begin
                     if (arbiter_grant == 1'b1) begin
-                        if (tx_empty == 1'b1) begin
-                            tx_wr_en <= 1'b1;
+                        if (uart_tx_empty == 1'b1) begin
+                            uart_tx_wr_en <= 1'b1;
                             tx_byte_p <= (APDU_ID << 4 | MASTER_ID);
                             crc <= (APDU_ID << 4 | MASTER_ID);
                             status_sender_state <= STATUS_SENDER_OP;
@@ -875,7 +874,7 @@ module status_sender#(
                 end
 
                 // STATUS_SENDER_END: begin
-                //     tx_wr_en <= 1'b0;
+                //     uart_tx_wr_en <= 1'b0;
                 //     status_sender_state <= STATUS_SENDER_IDLE;
                 // end
             endcase

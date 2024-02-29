@@ -35,12 +35,6 @@ module cmd_parser#(
         input wire uart_rx_empty,
         input wire uart_rx_valid,
         input wire [9:0] uart_rx_dc,
-        
-        output reg [7:0] tx_byte,
-        output reg tx_wr_en, 
-        input tx_full,
-        input tx_empty,
-        input [9:0] tx_dc,
 
         output reg arbiter_req,
         input arbiter_grant,
